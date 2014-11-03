@@ -15,7 +15,11 @@ Pages
 4. Checkout - takes/validates credit card info, expiration date, customer profile info (name, address, ... etc.) and then has some printable receipt. In the background the order is then submitted to the database with all personal info and item info.
 5. Create an account - takes/validates - unique username, password 6 characters long, address info, this is then added to the database.
 6. Admin
+
 a. Admin Inventory - This will look similar to Inventory, but with just image, name, price of cards with links to edit, delete, or add.
+
 i. Edit - A single page to edit the card
+
 ii. Add - A single page with fields for adding a card
+
 b. Display Orders and customer users, with the ability to delete order/customers. I would imagine this to be two seperate lists, and then they have some delete button next to each of them.
