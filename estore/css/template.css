@@ -1,4 +1,6 @@
  body{
+ 	padding-top: 50px;
+    padding-bottom: 20px;
  	background-image:url('http://localhost/csc309db/images/dcs_logo.png');
 	background-repeat:no-repeat;
 	background-size:200px;
@@ -50,7 +52,7 @@
 	background: white;
  }
 
-.form-group {
-  width: 200px;
+.form-control {
+  width: 20%;
 }
 

@@ -16,34 +16,28 @@ echo form_open_multipart('login');
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
+		<div id="navbar"
+			class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="#">Catalogue</a></li>
 				<li><a href="#">Shopping Cart</a></li>
 				<li><a href="#">Checkout</a></li>
 			</ul>
 			<form class="navbar-form navbar-right" role="form">
-				<div class="form-group">
-				<input type="text" placeholder="Email" class="form-control">
 			
           	<?php
-
-// 			echo form_error('username');
-// 			$username_type = array('type'=>'text', 'class'=>'form-control', 
-// 					'name'=>'username', 'required'=>'', 'value'=>'Username');
-// 			echo form_input($username_type,"required"); 
+			echo form_error('username');
+			$username_type = array('type'=>'text', 'class'=>'form-control', 
+					'name'=>'username', 'required'=>'', 'value'=>'Username');
+			echo form_input($username_type,"required"); 
 			?>
-			</div>
-			<div class="form-group">	
-			<input type="password" placeholder="Password" class="form-control">
+				
 			<?php
-// 			echo form_error('password');
-// 			$password_type = array('type'=>'text', 'class'=>'form-control',
-// 					'name'=>'password', 'required'=>'', 'value'=>'Password');
-// 			echo form_input($password_type);
+			echo form_error('password');
+			$password_type = array('type'=>'text', 'class'=>'form-control',
+					'name'=>'password', 'required'=>'', 'value'=>'Password');
+			echo form_input($password_type);
 			?>
-			</div>
 			<button type="submit" class="btn btn-success">Sign in</button>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
