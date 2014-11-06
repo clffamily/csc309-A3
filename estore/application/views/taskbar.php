@@ -1,7 +1,3 @@
-<?php
-echo form_open_multipart('login');
-?>
-
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -24,21 +20,23 @@ echo form_open_multipart('login');
 				<li><a href="#">Checkout</a></li>
 			</ul>
 			<form class="navbar-form navbar-right" role="form">
-			
+			<div class="form-group">
           	<?php
-			echo form_error('username');
+			//echo form_error('username');
 			$username_type = array('type'=>'text', 'class'=>'form-control', 
 					'name'=>'username', 'required'=>'', 'value'=>'Username');
 			echo form_input($username_type,"required"); 
 			?>
-				
+			</div>
+			<div class="form-group">	
 			<?php
-			echo form_error('password');
+			//echo form_error('password');
 			$password_type = array('type'=>'text', 'class'=>'form-control',
 					'name'=>'password', 'required'=>'', 'value'=>'Password');
 			echo form_input($password_type);
 			?>
-			<button type="submit" class="btn btn-success">Sign in</button>
+			</div>
+			<button type="submit" class="btn btn-default">Sign in</button>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">Create A New Account</a></li>
