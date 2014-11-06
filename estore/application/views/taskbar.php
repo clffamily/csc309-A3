@@ -8,7 +8,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Baseball Cards</a>
+			<a class="navbar-brand" href="#">Baseball Cards Store</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,6 +18,15 @@
 				<li class="active"><a href="#">Catalogue</a></li>
 				<li><a href="#">Shopping Cart</a></li>
 				<li><a href="#">Checkout</a></li>
+				<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Add card</a></li>
+            <li><a href="#">Edit cards</a></li>
+            <li><a href="#">Remove orders</a></li>
+            <li><a href="#">Remove users</a></li>
+          </ul>
+        </li>
 			</ul>
 			<form class="navbar-form navbar-right" role="form">
 			<div class="form-group">
