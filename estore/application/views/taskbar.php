@@ -1,3 +1,4 @@
+<?php echo validation_errors(); ?>
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -31,17 +32,17 @@
 			<form class="navbar-form navbar-right" role="form">
 			<div class="form-group">
           	<?php
-			//echo form_error('username');
+			echo form_error('username');
 			$username_type = array('type'=>'text', 'class'=>'form-control', 
-					'name'=>'username', 'required'=>'', 'value'=>'Username');
-			echo form_input($username_type,"required"); 
+					'name'=>'username', 'required'=>'', 'placeholder'=>'Username');
+			echo form_input($username_type); 
 			?>
 			</div>
 			<div class="form-group">	
 			<?php
-			//echo form_error('password');
+			echo form_error('password');
 			$password_type = array('type'=>'text', 'class'=>'form-control',
-					'name'=>'password', 'required'=>'', 'value'=>'Password');
+					'name'=>'password', 'required'=>'', 'placeholder'=>'Password');
 			echo form_input($password_type);
 			?>
 			</div>
