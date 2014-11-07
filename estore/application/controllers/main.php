@@ -33,7 +33,7 @@ class Main extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username','Username','required');
 		$this->form_validation->set_rules('password','Password','required|callback_check_database');
- 		if($this->form_validation->run() == FALSE)
+ 		if($this->form_validation->run() == FALSE && !$this->session->userdata('logged_in'))
  		{
  			$data['taskbar'] = 'taskbar_anon.php';
  			$data['message'] = validation_errors();
