@@ -15,9 +15,9 @@
 		<div id="navbar"
 			class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Catalogue</a></li>
-				<li><a href="#">Shopping Cart <span class="badge">0</span></a></li>
-				<li><a href="#">Checkout</a></li>
+				<li id="catalogue"><?php echo anchor("/",'Catalogue') ?></li>
+				<li id="shoppingcart"><?php echo anchor("main/shoppingcart",'Shopping Cart <span class="badge">0</span>') ?></li>
+				<li id="checkout"><?php echo anchor("main/checkout",'Checkout') ?></li>
 			</ul>
 			<?php 
 			$attributes = array('class' => 'navbar-form navbar-right', 'role' => 'form');
@@ -46,7 +46,7 @@
 			echo form_close();
 			?>
 			<ul class="nav navbar-nav navbar-right">
-				<li><?php echo anchor("main/createuser",'Create A New Account') ?></li>
+				<li id="createuser"><?php echo anchor("main/createuser",'Create A New Account') ?></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

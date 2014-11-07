@@ -10,3 +10,7 @@
 	margin-right: auto;
     margin-left: auto;
 }
+
+.jumbotron {
+    padding: 48px;
+}

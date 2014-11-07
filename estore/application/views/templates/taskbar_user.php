@@ -15,9 +15,9 @@
 		<div id="navbar"
 			class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Catalogue</a></li>
-				<li><a href="#">Shopping Cart <span class="badge">0</span></a></li>
-				<li><a href="#">Checkout</a></li>
+				<li id="catalogue"><a href="#">Catalogue</a></li>
+				<li id="shoppingcart"><a href="#">Shopping Cart <span class="badge">0</span></a></li>
+				<li id="checkout"><a href="#">Checkout</a></li>
 			</ul>
 			<?php 
 			$attributes = array('class' => 'navbar-form navbar-right', 'role' => 'form');

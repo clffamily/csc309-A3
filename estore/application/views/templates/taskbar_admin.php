@@ -15,9 +15,9 @@
 		<div id="navbar"
 			class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Catalogue</a></li>
-				<li><a href="#">Shopping Cart <span class="badge">0</span></a></li>
-				<li><a href="#">Checkout</a></li>
+				<li id="catalogue"><a href="#">Catalogue</a></li>
+				<li><a href="#" id="shoppingcart">Shopping Cart <span class="badge">0</span></a></li>
+				<li><a href="#" id="checkout">Checkout</a></li>
 				<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
