@@ -15,9 +15,17 @@
 </head>
 <body>
 
-
-	<?php $this->load->view('taskbar')?>
-
+	
+	<?php $this->load->view($taskbar)?>
+	<div class="container-all">
+	<?php 
+	if ($message) { 
+	?>
+	<div class="alert alert-warning" role="alert"><?= $message ?></div>
+	<?php
+	} 
+	?>
+	</div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>

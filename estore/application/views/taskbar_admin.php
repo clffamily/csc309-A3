@@ -30,33 +30,13 @@
 			</ul>
 			<?php 
 			$attributes = array('class' => 'navbar-form navbar-right', 'role' => 'form');
-			echo form_open("main/login", $attributes);
+			echo form_open("main/logout", $attributes);
 			?>
-			<div class="form-group">
-          	<?php
-          	
-			//echo form_error('username');
-			$username_type = array('type'=>'text', 'class'=>'form-control', 
-					'id'=>'username', 'name'=>'username', 'required'=>'', 'placeholder'=>'Username');
-			echo form_input($username_type); 
-			?>
-			</div>
-			<div class="form-group">	
-			<?php
-			//echo form_error('password');
-			$password_type = array('type'=>'text', 'class'=>'form-control',
-					'id'=>'password', 'name'=>'password', 'required'=>'', 'placeholder'=>'Password');
-			echo form_input($password_type);
-			?>
-			</div>
 			<?php 
-			$submit_type = array('type'=>'submit', 'class'=>'btn btn-default', 'value'=>'Sign in');
+			$submit_type = array('type'=>'submit', 'class'=>'btn btn-default', 'value'=>'Logout');
 			echo form_submit($submit_type);
 			echo form_close();
 			?>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Create A New Account</a></li>
-			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
