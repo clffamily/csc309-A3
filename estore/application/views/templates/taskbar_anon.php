@@ -18,19 +18,10 @@
 				<li class="active"><a href="#">Catalogue</a></li>
 				<li><a href="#">Shopping Cart <span class="badge">0</span></a></li>
 				<li><a href="#">Checkout</a></li>
-				<li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Add card</a></li>
-            <li><a href="#">Edit cards</a></li>
-            <li><a href="#">Remove orders</a></li>
-            <li><a href="#">Remove users</a></li>
-          </ul>
-        </li>
 			</ul>
 			<?php 
 			$attributes = array('class' => 'navbar-form navbar-right', 'role' => 'form');
-			echo form_open("main/login", $attributes);
+			echo form_open("uservalidation/login", $attributes);
 			?>
 			<div class="form-group">
           	<?php
@@ -55,7 +46,7 @@
 			echo form_close();
 			?>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Create A New Account</a></li>
+				<li><?php echo anchor("main/createuser",'Create A New Account') ?></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

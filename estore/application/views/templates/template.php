@@ -19,10 +19,15 @@
 	<?php $this->load->view($taskbar)?>
 	<div class="container-all">
 	<?php 
-	if ($message) { 
+	if (isset($message)) { 
 	?>
 	<div class="alert alert-warning" role="alert"><?= $message ?></div>
 	<?php
+	}
+	?>
+	<?php 
+	if (isset($main)) {
+		echo $main;
 	} 
 	?>
 	</div>
