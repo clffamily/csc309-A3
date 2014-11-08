@@ -14,6 +14,10 @@ class Accounts extends CI_Controller {
 			$data['message'] = validation_errors();
 		}
 	
+		else if ($this->session->userdata('logged_in') && $this->input->post('title') == 'Accounts') {
+			redirect('', 'refresh');
+		}
+		
 		else {
 			$data = checkUser($this);
 		}
@@ -53,5 +57,38 @@ class Accounts extends CI_Controller {
 	{
 		$this->session->unset_userdata('logged_in');
 		redirect('', 'refresh');
+	}
+	
+	function create() {
+		$this->load->helper('checkuser');
+		$this->load->model('user');
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('firstname','First Name','required');
+		$this->form_validation->set_rules('lastname','Last Name','required');
+		$this->form_validation->set_rules('username','Username','required|is_unique[customers.login]');
+		$this->form_validation->set_rules('password','Password','required|min_length[6]');
+		$this->form_validation->set_rules('email','Email','required|valid_email|is_unique[customers.email]');
+		
+		$data = checkUser($this);
+		$data['title'] = $this->input->post('title');
+		$data['description'] = $this->input->post('description');
+		$data['contents'] = $this->input->post('contents');
+		$data['taskbarLinkId'] = $this->input->post('taskbarLinkId');
+		
+		if($this->form_validation->run() == FALSE){
+			$data['contentsMessageDanger'] = validation_errors();
+		}
+		
+		else {
+			$first = $this->input->post('firstname');
+			$last = $this->input->post('lastname');
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+			$email = $this->input->post('email');
+			$result = $this->user->insert($first, $last, $username, $password, $email);
+			$data['contentsMessageSuccess'] = "You account was created successfully. Login whenever you're ready.";
+		}
+
+		$this->load->view('templates/template.php', $data);
 	}
 }

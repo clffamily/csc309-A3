@@ -33,7 +33,7 @@ $(document).ready(function () {
 	<?php 
 	if (isset($message)) { 
 	?>
-	<div class="alert alert-warning" role="alert"><?= $message ?></div>
+	<div class="alert alert-danger" role="alert"><?= $message ?></div>
 	<?php
 	}
 	?>

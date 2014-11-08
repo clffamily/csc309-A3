@@ -38,7 +38,29 @@ if(isset($product) && isset($viewsingleproduct)){
 if(isset($contents)){
 	if($contents != ""){
 ?>
+<div class="contents">
+<?php 
+if(isset($contentsMessageSuccess)) {
+?>
+
+<div class="alert alert-success" role="alert"><?= $contentsMessageSuccess ?></div>
+
+<?php 
+}
+?>
+
+<?php 
+if(isset($contentsMessageDanger)) {
+?>
+
+<div class="alert alert-danger" role="alert"><?= $contentsMessageDanger ?></div>
+
+<?php 
+}
+?>
+
 <?php $this->load->view($contents)?>
+</div>
 <?php 
 }}
 ?>

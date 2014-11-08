@@ -1,5 +1,11 @@
 <?php
 Class User extends CI_Model {
+	
+	function getAll(){
+		$query = $this->db->get('customers');
+		return $query;
+	}
+	
 	function login($username, $password)
 	{
 		$this->db->select('id, first, last, login, password, email');
@@ -15,5 +21,13 @@ Class User extends CI_Model {
 		else {
 			return false;
 		}
+	}
+	
+	function insert($first, $last, $username, $password, $email) {
+		return $this->db->insert("customers", array('first' => $first,
+													'last' => $last,
+													'login' => $username,
+													'password' => $password,
+													'email' => $email));
 	}
 }
