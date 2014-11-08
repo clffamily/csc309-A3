@@ -37,9 +37,53 @@ $(document).ready(function () {
 	}
 	?>
 	<div class="jumbotron"> 
-	<title>Add Products</title>
-	<p>
-	<?php $this->load->view('product/newForm.php')?>
+	<?php 
+	if (isset($title)){
+	?>
+		<h1><?= $title ?></h1>
+	<?php 
+	}?>
+	
+	<?php 
+	if (isset($addProduct)){
+	?>
+	<p><?php $this->load->view('product/newForm.php'); ?></p>
+	<?php 
+	}
+	?>
+	
+	<?php 
+	if (isset($products)){
+	?>
+	<p><?php $this->load->view('product/list.php', $products); ?></p>
+	<?php 
+	}
+	?>
+	
+	<?php
+	if(isset($product) && isset($editsingleproduct)){
+	?>
+	<p><?php $this->load->view('product/editForm.php', $product)?></p>
+	<?php 
+	}
+	?>
+	
+	<?php
+	if(isset($product) && isset($viewsingleproduct)){
+	?>
+	<p><?php $this->load->view('product/read.php', $product)?></p>
+	<?php 
+	}
+	?>
+	
+	<?php
+	if(isset($users)){
+	?>
+	<p><?php $this->load->view('admin/users/list.php', $users)?></p>
+	<?php 
+	}
+	?>
+	
 	</div>
 	</div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

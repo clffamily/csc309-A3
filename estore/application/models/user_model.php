@@ -32,4 +32,8 @@ Class User_model extends CI_Model {
 													'password' => $password,
 													'email' => $email));
 	}
+	
+	function delete($id) {
+		return $this->db->delete("customers",array('id' => $id ));
+	}
 }

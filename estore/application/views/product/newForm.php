@@ -8,27 +8,45 @@
 <?php 
 	echo "<p>" . anchor('admin/editProduct','Back') . "</p>";
 	
-	echo form_open_multipart('store/create');
 	
+	
+	echo form_open_multipart('store/create');
+?>
+
+<div class="form-group">
+<?php
 	echo form_label('Name'); 
 	echo form_error('name');
-	echo form_input('name',set_value('name'),"required");
-
+	//echo form_input('name',set_value('name'),"required");
+	$name_input = array( 'name' => 'name', 'class' => 'form-control');
+	echo form_input($name_input , set_value('name'),"required");
+?>
+</div>
+<div class="form-group">
+<?php
 	echo form_label('Description');
 	echo form_error('description');
-	echo form_input('description',set_value('description'),"required");
-	
+	$des_input = array( 'name' => 'description', 'class' => 'form-control');
+	echo form_input($des_input,set_value('description'),"required");
+?>
+</div>
+<div class="form-group">
+<?php	
 	echo form_label('Price');
 	echo form_error('price');
-	echo form_input('price',set_value('price'),"required");
-	
+	$price_input = array( 'name' => 'price', 'class' => 'form-control');
+	echo form_input($price_input,set_value('price'),"required");
+?>
+</div>
+<?php
 	echo form_label('Photo');
 	
 	if(isset($fileerror))
 		echo $fileerror;	
 ?>	
-	<input type="file" name="userfile" size="20" />
-	
+<div class="form-group">
+	<input type="file" name="userfile" size="10" class = 'form-control'/>
+</div>	
 <?php 
 
 $attributes = array(

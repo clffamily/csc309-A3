@@ -59,13 +59,19 @@ class Store extends CI_Controller {
 		else {
 			if ( !$fileUploadSuccess) {
 				$data['fileerror'] = $this->upload->display_errors();
-				$this->load->view('admin/addProduct.php',$data);
+				//$data['title'] = 'Add Products';
+				$data['taskbarLinkId'] = 'admin';
+				$data['addProduct'] = 'True';
+				$this->load->view('admin/admin_template.php',$data);
 				//$this->load->view('store/index');
 				return;
 			}
 			
 			//$this->load->view('product/newForm.php');
-			$this->load->view('admin/addProduct.php');
+			//$data['title'] = 'Add Products';
+			$data['taskbarLinkId'] = 'admin';
+			$data['addProduct'] = 'True';
+			$this->load->view('admin/admin_template.php',$data);
 		}	
 	}
 	
