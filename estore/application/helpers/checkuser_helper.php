@@ -3,9 +3,9 @@ function checkUser($obj) {
 	if($obj->session->userdata('logged_in'))
 	{
 		$session_data = $obj->session->userdata('logged_in');
-		$id = $session_data['id'];
+		$login = $session_data['login'];
 			
-		if ($id == 1) {
+		if ($login == "admin") {
 			$data['taskbar'] = 'templates/taskbar_admin.php';		
 		}
 		else{
