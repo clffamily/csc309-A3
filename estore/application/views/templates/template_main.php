@@ -32,6 +32,8 @@ if(isset($product) && isset($viewsingleproduct)){
 }
 ?>
 
+</div>
+
 <?php
 if(isset($contents)){
 	if($contents != ""){
@@ -41,4 +43,3 @@ if(isset($contents)){
 }}
 ?>
 
-</div>
