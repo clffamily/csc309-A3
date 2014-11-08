@@ -6,7 +6,7 @@ function checkUser($obj) {
 		$id = $session_data['id'];
 			
 		if ($id == 1) {
-			$data['taskbar'] = 'templates/taskbar_admin.php';
+			$data['taskbar'] = 'templates/taskbar_admin.php';		
 		}
 		else{
 			$data['taskbar'] = 'templates/taskbar_user.php';

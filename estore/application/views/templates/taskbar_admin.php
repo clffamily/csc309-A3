@@ -21,8 +21,9 @@
 				<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Add card</a></li>
-            <li><a href="#">Edit cards</a></li>
+            
+            <li><?php echo anchor('admin/addProduct','Add Product') ?></li>
+            <li><?php echo anchor('admin/editProduct','Edit Product') ?></li>
             <li><a href="#">Remove orders</a></li>
             <li><a href="#">Remove users</a></li>
           </ul>

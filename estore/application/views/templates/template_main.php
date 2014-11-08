@@ -1,5 +1,11 @@
 <div class="jumbotron">
-<h1><?= $title?></h1>
+<?php 
+if (isset($title)){
+?>
+<h1><?= $title ?></h1>
+<?php
+}?>
+
 <?php 
 if(isset($description)){
 ?>
@@ -8,6 +14,15 @@ if(isset($description)){
 }
 ?>
 </div>
+
+<?php
+if(isset($products)){
+?>
+<p><?php $this->load->view('product/list.php', $products)?></p>
+<?php 
+}
+?>
+
 <?php
 if(isset($contents)){
 ?>

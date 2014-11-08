@@ -1,6 +1,6 @@
 <h2>Product Table</h2>
 <?php 
-		echo "<p>" . anchor('store/newForm','Add New') . "</p>";
+		echo "<p>" . anchor('admin/addProduct','Add New') . "</p>";
  	  
 		echo "<table>";
 		echo "<tr><th>Name</th><th>Description</th><th>Price</th><th>Photo</th></tr>";
