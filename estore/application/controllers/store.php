@@ -52,16 +52,20 @@ class Store extends CI_Controller {
 			$this->product_model->insert($product);
 
 			//Then we redirect to the index page again
-			redirect('store/index', 'refresh');
+			//redirect('store/index', 'refresh');
+			redirect('admin/editProduct');
+			
 		}
 		else {
 			if ( !$fileUploadSuccess) {
 				$data['fileerror'] = $this->upload->display_errors();
-				$this->load->view('product/newForm.php',$data);
+				$this->load->view('admin/addProduct.php',$data);
+				//$this->load->view('store/index');
 				return;
 			}
 			
-			$this->load->view('product/newForm.php');
+			//$this->load->view('product/newForm.php');
+			$this->load->view('admin/addProduct.php');
 		}	
 	}
 	
@@ -95,7 +99,8 @@ class Store extends CI_Controller {
 			$this->load->model('product_model');
 			$this->product_model->update($product);
 			//Then we redirect to the index page again
-			redirect('store/index', 'refresh');
+			//redirect('store/index', 'refresh');
+			redirect('admin/editProduct');
 		}
 		else {
 			$product = new Product();
@@ -115,7 +120,9 @@ class Store extends CI_Controller {
 			$this->product_model->delete($id);
 		
 		//Then we redirect to the index page again
-		redirect('store/index', 'refresh');
+		//redirect('store/index', 'refresh');
+		redirect('admin/editProduct');
+		
 	}
       
    

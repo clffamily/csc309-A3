@@ -1,4 +1,4 @@
-<h2>Edit Product</h2>
+<!-- <h2>Edit Product</h2> -->
 
 <style>
 	input { display: block;}
@@ -6,7 +6,7 @@
 </style>
 
 <?php 
-	echo "<p>" . anchor('store/index','Back') . "</p>";
+	echo "<p>" . anchor('admin/editProduct','Back') . "</p>";
 	
 	echo form_open("store/update/$product->id");
 	

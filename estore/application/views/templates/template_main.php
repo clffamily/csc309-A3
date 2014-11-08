@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron"> 
 <?php 
 if (isset($title)){
 ?>
@@ -13,12 +13,20 @@ if(isset($description)){
 <?php 
 }
 ?>
-</div>
+
 
 <?php
-if(isset($products)){
+if(isset($product) && isset($editsingleproduct)){
 ?>
-<p><?php $this->load->view('product/list.php', $products)?></p>
+<p><?php $this->load->view('product/editForm.php', $product)?></p>
+<?php 
+}
+?>
+
+<?php
+if(isset($product) && isset($viewsingleproduct)){
+?>
+<p><?php $this->load->view('product/read.php', $product)?></p>
 <?php 
 }
 ?>
@@ -30,3 +38,5 @@ if(isset($contents)){
 <?php 
 }
 ?>
+
+</div>

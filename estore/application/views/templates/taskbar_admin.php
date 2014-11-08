@@ -19,11 +19,11 @@
 				<li id="shoppingcart"><?php echo anchor("main/shoppingcart",'Shopping Cart <span class="badge">0</span>') ?></li>
 				<li id="checkout"><?php echo anchor("main/checkout",'Checkout') ?></li>
 				<li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>
+          <a id="admin" href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             
-            <li><?php echo anchor('admin/addProduct','Add Product') ?></li>
-            <li><?php echo anchor('admin/editProduct','Edit Product') ?></li>
+            <li><?php echo anchor('admin/addProduct','Add Products') ?></li>
+            <li><?php echo anchor('admin/editProduct','Edit Products') ?></li>
             <li><a href="#">Remove orders</a></li>
             <li><a href="#">Remove users</a></li>
           </ul>
