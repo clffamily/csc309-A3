@@ -52,6 +52,13 @@ class Admin extends CI_Controller{
 		redirect('admin/editProduct');
 	
 	}
+	
+	function getUsers() {
+		$this->load->model('user_model');
+		$users = $this->user_model->getAll();
+		$data['users']=$users;
+		$this->load->view('admin/users/list.php',$data);
+	}
 }
 
 ?>

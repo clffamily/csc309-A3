@@ -4,7 +4,7 @@ class Accounts extends CI_Controller {
 	
 	function login() {
 		$this->load->helper('checkuser');
-		$this->load->model('user');
+		$this->load->model('user_model');
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username','Username','required');
 		$this->form_validation->set_rules('password','Password','required|callback_check_database');
@@ -32,7 +32,7 @@ class Accounts extends CI_Controller {
 	
 	function check_database($password){
 		$username = $this->input->post('username');
-		$result = $this->user->login($username, $password);
+		$result = $this->user_model->login($username, $password);
 		if ($result){
 			$sess_array = array();
 			foreach ($result as $row) {
@@ -61,7 +61,7 @@ class Accounts extends CI_Controller {
 	
 	function create() {
 		$this->load->helper('checkuser');
-		$this->load->model('user');
+		$this->load->model('user_model');
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('firstname','First Name','required');
 		$this->form_validation->set_rules('lastname','Last Name','required');
@@ -85,7 +85,7 @@ class Accounts extends CI_Controller {
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 			$email = $this->input->post('email');
-			$result = $this->user->insert($first, $last, $username, $password, $email);
+			$result = $this->user_model->insert($first, $last, $username, $password, $email);
 			$data['contentsMessageSuccess'] = "You account was created successfully. Login whenever you're ready.";
 		}
 
