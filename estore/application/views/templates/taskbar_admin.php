@@ -8,7 +8,10 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<div class="navbar-brand">Baseball Cards Store</div>
+			<div class="navbar-brand"><b>Baseball Cards Shop</b></div> 
+			<div class="navbar-brand">
+			<img alt="Brand" class="img-responsive" src="<?= base_url(); ?>/images/glyphicons_311_baseball.png">
+			</div>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
