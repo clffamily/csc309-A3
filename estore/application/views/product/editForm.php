@@ -22,7 +22,14 @@
 	echo form_error('price');
 	echo form_input('price',$product->price,"required");
 	
-	echo form_submit('submit', 'Save');
+	$attributes = array(
+			'name' => 'submit',
+			'class' => 'btn btn-default',
+			'value' => 'Save'
+	);
+	
+	//echo form_submit('submit', 'Save');
+	echo form_submit($attributes);
 	echo form_close();
 ?>	
 

@@ -18,8 +18,8 @@
 				<li id="catalogue"><?php echo anchor("/",'Catalogue') ?></li>
 				<li id="shoppingcart"><?php echo anchor("main/shoppingcart",'Shopping Cart <span class="badge">0</span>') ?></li>
 				<li id="checkout"><?php echo anchor("main/checkout",'Checkout') ?></li>
-				<li class="dropdown">
-          <a id="admin" href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>
+				<li id="admin" class="dropdown">
+          <a  href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             
             <li><?php echo anchor('admin/addProduct','Add Products') ?></li>

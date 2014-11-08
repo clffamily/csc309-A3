@@ -9,7 +9,7 @@
 	echo "<p>" . anchor('admin/editProduct','Back') . "</p>";
 	
 	echo form_open_multipart('store/create');
-		
+	
 	echo form_label('Name'); 
 	echo form_error('name');
 	echo form_input('name',set_value('name'),"required");
@@ -29,9 +29,17 @@
 ?>	
 	<input type="file" name="userfile" size="20" />
 	
-<?php 	
-	
-	echo form_submit('submit', 'Create');
+<?php 
+
+$attributes = array(
+		'name' => 'submit',
+		'class' => 'btn btn-default',
+		'value' => 'Create'
+);
+
+	//$attributes = array('class' => 'btn btn-default', 'id' => 'myform');
+	//echo form_submit('submit', 'Create', $attributes);
+	echo form_submit($attributes);
 	echo form_close();
 ?>	
 

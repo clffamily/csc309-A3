@@ -8,14 +8,15 @@ class Admin extends CI_Controller{
 	}
 	
 	function addProduct() {
-		$this->load->view('admin/addProduct.php');
+		$data['taskbarLinkId'] = 'admin';
+		$this->load->view('admin/addProduct.php',$data);
 	}
 	
 	function editProduct() {
 		$this->load->model('product_model');
 		$products = $this->product_model->getAll();
 		$data['products']=$products;
-		//$this->load->view('templates/template.php', $data);
+		$data['taskbarLinkId'] = 'admin';
 		$this->load->view('admin/editProduct.php', $data);
 	}
 	
@@ -23,7 +24,7 @@ class Admin extends CI_Controller{
 		$this->load->helper('checkuser');
 		$data = checkUser($this);
 		$data['title'] = "Edit Product";
-		
+		$data['taskbarLinkId'] = 'admin';
 		$this->load->model('product_model');
 		$product = $this->product_model->get($id);	
 		$data['product']=$product;
@@ -36,7 +37,7 @@ class Admin extends CI_Controller{
 		$this->load->helper('checkuser');
 		$data = checkUser($this);
 		$data['title'] = "View Product";
-		
+		$data['taskbarLinkId'] = 'admin';
 		$this->load->model('product_model');
 		$product = $this->product_model->get($id);
 		$data['product']=$product;
@@ -45,12 +46,9 @@ class Admin extends CI_Controller{
 	}
 	
 	function deleteProduct($id) {
-		$this->load->model('product_model');
-	
+		$this->load->model('product_model');	
 		if (isset($id))
 			$this->product_model->delete($id);	
-		//Then we redirect to the index page again
-		//redirect('store/index', 'refresh');
 		redirect('admin/editProduct');
 	
 	}

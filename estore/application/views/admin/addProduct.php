@@ -19,7 +19,7 @@
 <script>
 $(document).ready(function () {
 	$('li').removeClass();
-	//$('#<?= $taskbarLinkId ?>').addClass('active');
+	$('#<?= $taskbarLinkId ?>').addClass('active');
 	$('li > a').click(function() {
 		$('li').removeClass();
 		$(this).parent().addClass('active');
