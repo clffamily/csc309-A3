@@ -12,6 +12,8 @@ class Main extends CI_Controller {
     	$this->load->helper('checkuser');
     	$data = checkUser($this);
     	$data['title'] = "Checkout";
+    	$data['description'] = "";
+    	$data['contents'] = '';
     	$data['taskbarLinkId'] = 'checkout';
     	$this->load->view('templates/template.php', $data);    	
     }
@@ -20,6 +22,8 @@ class Main extends CI_Controller {
     	$this->load->helper('checkuser');
     	$data = checkUser($this);
     	$data['title'] = "Shopping Cart";
+    	$data['description'] = "";
+    	$data['contents'] = '';
     	$data['taskbarLinkId'] = 'shoppingcart';
     	$this->load->view('templates/template.php', $data);
     }
@@ -38,6 +42,8 @@ class Main extends CI_Controller {
 		$this->load->helper('checkuser');
     	$data = checkUser($this);
     	$data['title'] = "Catalogue";
+    	$data['description'] = "";
+    	$data['contents'] = '';
     	$data['taskbarLinkId'] = 'catalogue';
 		$this->load->view('templates/template.php', $data);
 	}

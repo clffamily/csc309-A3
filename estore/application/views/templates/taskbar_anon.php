@@ -8,7 +8,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Baseball Cards Store</a>
+			<div class="navbar-brand">Baseball Cards Store</div>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,6 +41,18 @@
 			?>
 			</div>
 			<?php 
+			$title_type = array('type'=>'hidden', 'class'=>'form-control', 'value' => $title,
+					'id'=>'title', 'name'=>'title', 'visibility'=>'hidden');
+			echo form_input($title_type);
+			$description_type = array('type'=>'hidden', 'class'=>'form-control', 'value' => $description,
+					'id'=>'description', 'name'=>'description');
+			echo form_input($description_type);
+			$contents_type = array('type'=>'hidden', 'class'=>'form-control', 'value' => $contents,
+					'id'=>'contents', 'name'=>'contents', 'visibility'=>'hidden');
+			echo form_input($contents_type);
+			$taskbarLinkId_type = array('type'=>'hidden', 'class'=>'form-control', 'value' => $taskbarLinkId,
+					'id'=>'taskbarLinkId', 'name'=>'taskbarLinkId', 'visibility'=>'hidden');
+			echo form_input($taskbarLinkId_type);
 			$submit_type = array('type'=>'submit', 'class'=>'btn btn-default', 'value'=>'Sign in');
 			echo form_submit($submit_type);
 			echo form_close();

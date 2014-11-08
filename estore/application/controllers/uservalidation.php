@@ -18,6 +18,11 @@ class UserValidation extends CI_Controller {
 			$data = checkUser($this);
 		}
 	
+		$data['title'] = $this->input->post('title');
+		$data['description'] = $this->input->post('description');
+		$data['contents'] = $this->input->post('contents');
+		$data['taskbarLinkId'] = $this->input->post('taskbarLinkId');
+		
 		$this->load->view('templates/template.php', $data);
 	}
 	
