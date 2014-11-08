@@ -53,6 +53,6 @@ class UserValidation extends CI_Controller {
 	{
 		$this->session->unset_userdata('logged_in');
 		//session_destroy();
-		redirect('/', 'refresh');
+		redirect('', 'refresh');
 	}
 }
