@@ -1,6 +1,6 @@
 <?php
 session_start();
-class UserValidation extends CI_Controller {
+class Accounts extends CI_Controller {
 	
 	function login() {
 		$this->load->helper('checkuser');
@@ -52,7 +52,6 @@ class UserValidation extends CI_Controller {
 	function logout()
 	{
 		$this->session->unset_userdata('logged_in');
-		//session_destroy();
 		redirect('', 'refresh');
 	}
 }

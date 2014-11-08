@@ -24,12 +24,10 @@
 			</ul>
 			<?php 
 			$attributes = array('class' => 'navbar-form navbar-right', 'role' => 'form');
-			echo form_open("uservalidation/login", $attributes);
+			echo form_open("accounts/login", $attributes);
 			?>
 			<div class="form-group">
           	<?php
-          	
-			//echo form_error('username');
 			$username_type = array('type'=>'text', 'class'=>'form-control', 
 					'id'=>'username', 'name'=>'username', 'required'=>'', 'placeholder'=>'Username');
 			echo form_input($username_type); 
@@ -37,8 +35,7 @@
 			</div>
 			<div class="form-group">	
 			<?php
-			//echo form_error('password');
-			$password_type = array('type'=>'text', 'class'=>'form-control',
+			$password_type = array('type'=>'password', 'class'=>'form-control',
 					'id'=>'password', 'name'=>'password', 'required'=>'', 'placeholder'=>'Password');
 			echo form_input($password_type);
 			?>

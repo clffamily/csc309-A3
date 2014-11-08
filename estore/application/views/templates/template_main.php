@@ -38,7 +38,7 @@ if(isset($product) && isset($viewsingleproduct)){
 if(isset($contents)){
 	if($contents != ""){
 ?>
-<p><?php $this->load->view($contents)?></p>
+<?php $this->load->view($contents)?>
 <?php 
 }}
 ?>

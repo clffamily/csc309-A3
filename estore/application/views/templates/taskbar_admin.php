@@ -34,7 +34,7 @@
 			</ul>
 			<?php 
 			$attributes = array('class' => 'navbar-form navbar-right', 'role' => 'form');
-			echo form_open("uservalidation/logout", $attributes);
+			echo form_open("accounts/logout", $attributes);
 			?>
 			<?php 
 			$submit_type = array('type'=>'submit', 'class'=>'btn btn-default', 'value'=>'Logout');
