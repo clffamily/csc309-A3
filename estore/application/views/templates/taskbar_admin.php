@@ -27,9 +27,9 @@
             
             <li><?php echo anchor('admin/addProduct','Add Products') ?></li>
             <li><?php echo anchor('admin/editProduct','Edit Products') ?></li>
-            <li><a href="#">Remove orders</a></li>
+<!--             <li><a href="#">Remove orders</a></li> -->
+            <li><?php echo anchor('admin/getOrders','Remover Orders') ?></li>
             <li><?php echo anchor('admin/getUsers','Remover Users') ?></li>
-<!--             <li><a href="#">Remove users</a></li> -->
           </ul>
         </li>
 			</ul>

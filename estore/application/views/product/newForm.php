@@ -2,14 +2,10 @@
 
 <style>
 	input { display: block;}
-	
 </style>
 
 <?php 
 	echo "<p>" . anchor('admin/editProduct','Back') . "</p>";
-	
-	
-	
 	echo form_open_multipart('store/create');
 ?>
 
@@ -45,8 +41,9 @@
 		echo $fileerror;	
 ?>	
 <div class="form-group">
-	<input type="file" name="userfile" size="10" class = 'form-control'/>
+	<input type="file" name="userfile" size="30"/>
 </div>	
+
 <?php 
 
 $attributes = array(

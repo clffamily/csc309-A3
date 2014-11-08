@@ -6,7 +6,8 @@ class Admin extends CI_Controller{
 		// Call the Controller constructor
 		parent::__construct();
 	}
-	
+
+//Product operations
 	function addProduct() {
 		//$data['title'] = 'Add Products';
 		$data['taskbarLinkId'] = 'admin';
@@ -77,6 +78,24 @@ class Admin extends CI_Controller{
 		redirect('admin/getUsers');
 	
 	}
+//Order operations
+	function getOrders() {
+		$this->load->model('order_model');
+		$orders = $this->order_model->getAll();
+		$data['taskbarLinkId'] = 'admin';
+		$data['orders']=$orders;
+		//$this->load->view('admin/users/list.php',$data);
+		$this->load->view('admin/admin_template.php',$data);
+	}
+	
+	function deleteOrder($id) {
+		$this->load->model('order_model');
+		if (isset($id))
+			$this->order_model->delete($id);
+		redirect('admin/getOrders');
+	
+	}
+	
 }
 
 ?>

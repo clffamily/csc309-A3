@@ -84,6 +84,14 @@ $(document).ready(function () {
 	}
 	?>
 	
+	<?php
+	if(isset($orders)){
+	?>
+	<p><?php $this->load->view('admin/orders/list.php', $orders)?></p>
+	<?php 
+	}
+	?>
+	
 	</div>
 	</div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
