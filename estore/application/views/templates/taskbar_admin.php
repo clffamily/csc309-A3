@@ -8,7 +8,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Baseball Cards Store</a>
+			<div class="navbar-brand">Baseball Cards Store</div>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->

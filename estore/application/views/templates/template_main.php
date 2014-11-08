@@ -7,7 +7,7 @@ if (isset($title)){
 }?>
 
 <?php 
-if(isset($description)){
+if($description != ""){
 ?>
 <p><?= $description ?></p>
 <?php 
@@ -24,7 +24,7 @@ if(isset($products)){
 ?>
 
 <?php
-if(isset($contents)){
+if($contents != ""){
 ?>
 <p><?php $this->load->view($contents)?></p>
 <?php 
