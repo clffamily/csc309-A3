@@ -67,6 +67,7 @@ class Accounts extends CI_Controller {
 		$this->form_validation->set_rules('lastname','Last Name','required');
 		$this->form_validation->set_rules('username','Username','required|is_unique[customers.login]');
 		$this->form_validation->set_rules('password','Password','required|min_length[6]');
+		$this->form_validation->set_rules('passconf','Password Confirmation','required|matches[password]');
 		$this->form_validation->set_rules('email','Email','required|valid_email|is_unique[customers.email]');
 		
 		$data = checkUser($this);

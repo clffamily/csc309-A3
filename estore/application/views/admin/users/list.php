@@ -18,7 +18,8 @@
  			echo "<td>" . $user['email'] . "</td>";
 
  			$id = $user['id'];
- 			if ($id != 1){
+ 			$login = $user['login'];
+ 			if ($login != 'admin'){
  				echo "<td>" . anchor("admin/deleteUser/$id",'Delete',"onClick='return confirm(\"Do you really want to delete this record?\");'") . "</td>";
  			}
  			else{

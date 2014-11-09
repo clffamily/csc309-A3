@@ -1,8 +1,26 @@
+<head>
+	<script src="js/jquery.js"></script>
+	<script>
+			function checkPassword() {
+				var p1 = $("#pass1"); 
+				var p2 = $("#pass2");
+				
+				if (p1.val() == p2.val()) {
+					p2.get(0).setCustomValidity("");  // All is well, clear error message
+					return true;
+				}	
+				else	 {
+					p2.get(0).setCustomValidity("Passwords do not match");
+					return false;
+				}
+			}
+		</script>
+</head>	
+	
 <?php 
-			$attributes = array('role' => 'form');
-			echo form_open("accounts/create", $attributes);
+		$attributes = array('role' => 'form');
+		echo form_open("accounts/create", $attributes);
 ?>
-
 <div class="form-group">
 <label for="firstName">First Name</label>
 
@@ -40,11 +58,21 @@ echo form_input($username_type);
 $password_type = array('type'=>'password', 'class'=>'form-control', 'pattern'=>'.{6}(.)*',
 		'oninvalid'=>"setCustomValidity('Please enter a password with at least 6 characters')",
 		'onchange'=>"try{setCustomValidity('')}catch(e){}",
-		'id'=>'password', 'name'=>'password', 'required'=>'', 'placeholder'=>'Enter a password');
+		'id'=>'pass1', 'name'=>'password', 'required'=>'', 'placeholder'=>'Enter a password');
 echo form_input($password_type);
 ?>
 
 </div>
+<div class="form-group">
+<label for="passconf">Password Confirmation</label>
+
+<?php 
+echo form_password('passconf','',"id='pass2' required oninput='checkPassword()' 
+		class='form-control' placeholder='Confirm your password'");
+?>
+
+</div>
+
 <div class="form-group">
 <label for="email">Email</label>
 
