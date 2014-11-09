@@ -36,7 +36,6 @@ class Admin extends CI_Controller{
 		$data['product']=$product;
 		$data['editsingleproduct'] = "True";	
 		//$data['contents'] = $this->load->view('product/list.php', $products, true);
-		//$this->load->view('templates/template.php', $data);
 		$this->load->view('admin/admin_template.php',$data);
 	}
 	
@@ -78,6 +77,8 @@ class Admin extends CI_Controller{
 		redirect('admin/getUsers');
 	
 	}
+	
+	
 //Order operations
 	function getOrders() {
 		$this->load->model('order_model');

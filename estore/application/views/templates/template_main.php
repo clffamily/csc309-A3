@@ -42,7 +42,13 @@ if(isset($contentsMessageDanger)) {
 }
 ?>
 
-<?php $this->load->view($contents)?>
+<?php 
+if (isset($contentsdata)){
+	$this->load->view($contents,$contentsdata);
+}else{
+	$this->load->view($contents);
+}
+	?>
 </div>
 <?php 
 }}

@@ -43,9 +43,15 @@ class Main extends CI_Controller {
     	$data = checkUser($this);
     	$data['title'] = "Catalogue";
     	$data['description'] = "";
-    	$data['contents'] = '';
     	$data['taskbarLinkId'] = 'catalogue';
+    	$data['contents'] = 'catalogue/list.php';
+    	
+    	$this->load->model('product_model');
+    	$products = $this->product_model->getAll();
+    	$data['contentsdata']=$products;
+    	
 		$this->load->view('templates/template.php', $data);
+		
 	}
 	
 }
