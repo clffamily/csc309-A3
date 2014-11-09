@@ -8,7 +8,7 @@
 			<div class="col-xs-6 col-md-4">
 			<div class="panel panel-default">
   			<div class="panel-body">
-			<a href="#" class="thumbnail">
+			<a  class="thumbnail">
 	<?php 
  			echo "<img src='" . base_url() . "images/product/" . $product->photo_url . "' width='300px' />";
  	?>
