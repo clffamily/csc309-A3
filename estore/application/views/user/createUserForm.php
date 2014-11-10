@@ -1,22 +1,3 @@
-<head>
-	<script src="js/jquery.js"></script>
-	<script>
-			function checkPassword() {
-				var p1 = $("#pass1"); 
-				var p2 = $("#pass2");
-				
-				if (p1.val() == p2.val()) {
-					p2.get(0).setCustomValidity("");  // All is well, clear error message
-					return true;
-				}	
-				else	 {
-					p2.get(0).setCustomValidity("Passwords do not match");
-					return false;
-				}
-			}
-		</script>
-</head>	
-	
 <?php 
 		$attributes = array('role' => 'form');
 		echo form_open("accounts/create", $attributes);
@@ -67,7 +48,7 @@ echo form_input($password_type);
 <label for="passconf">Password Confirmation</label>
 
 <?php 
-echo form_password('passconf','',"id='pass2' required oninput='checkPassword()' 
+echo form_password('passconf','',"id='pass2' required
 		class='form-control' placeholder='Confirm your password'");
 ?>
 
