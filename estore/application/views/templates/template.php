@@ -9,7 +9,7 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
 
-<link rel = "stylesheet" href="<?= base_url();?>css/template.css">
+<link rel = "stylesheet" href="<?= base_url()?>css/template.css">
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
