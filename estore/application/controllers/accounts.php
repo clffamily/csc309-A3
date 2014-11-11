@@ -27,6 +27,12 @@ class Accounts extends CI_Controller {
 		$data['contents'] = $this->input->post('contents');
 		$data['taskbarLinkId'] = $this->input->post('taskbarLinkId');
 		
+		//Load the data from database if the user was in catalogue page.
+		if($data['contents'] == 'catalogue/list.php'){
+			$this->load->model('product_model');
+			$products = $this->product_model->getAll();
+			$data['contentsdata']=$products;}
+		
 		$this->load->view('templates/template.php', $data);
 	}
 	
