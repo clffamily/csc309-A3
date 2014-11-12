@@ -19,7 +19,7 @@
 			class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li id="catalogue"><?php echo anchor("/",'Catalogue') ?></li>
-				<li id="shoppingcart"><?php echo anchor("main/shoppingcart",'Shopping Cart <span class="badge">' . $cartcount . '</span>') ?></li>
+				<li id="shoppingcart"><?php echo anchor("main/shoppingcart",'Shopping Cart <span class="badge">0</span>') ?></li>
 				<li id="checkout"><?php echo anchor("main/checkout",'Checkout') ?></li>
 				<li id="admin" class="dropdown">
           <a  href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>

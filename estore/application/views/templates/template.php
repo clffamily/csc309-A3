@@ -40,6 +40,7 @@ $(document).ready(function () {
 	<p>
 	<?php $this->load->view('templates/template_main.php')?>
 	</div>
+<script src="<?= base_url() ?>js/cookies.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
