@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class Store extends CI_Controller {
      
@@ -130,10 +131,35 @@ class Store extends CI_Controller {
 		redirect('admin/editProduct');
 		
 	}
+	
+	function addToCart($id) {
+		if (isset($id)) {
+			$cartProduct['id'] = $id;
+			$cartProduct['quantity'] = 1;
+			if ($this->session->userdata('shoppingCart')) {
+				$shoppingCart = $this->session->userdata('shoppingCart');
+				$shoppingCart[] = $cartProduct; 
+			}
+			else {
+				$shoppingCart[] = $cartProduct;
+			}
+			$this->session->set_userdata('shoppingCart', $shoppingCart);
+		}
+		redirect("", 'refresh');
+	}
       
-   
-    
-    
-    
+	function removeFromCart($id) {
+		if (isset($id)) {
+			$newShoppingCart = array();
+			$oldShoppingCart = $this->session->userdata('shoppingCart');
+			foreach ($oldShoppingCart as $item) {
+				if($item['id'] != $id) {
+					$newShoppingCart[] = $item;
+				}
+			}
+			$this->session->set_userdata('shoppingCart', $newShoppingCart);
+		}
+		redirect("", 'refresh');
+	}
 }
 

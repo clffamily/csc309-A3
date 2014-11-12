@@ -1,13 +1,16 @@
 <script type="text/javascript">
 $(document).ready(function(){
-	$('.img').popover();  
+	$('.img').popover();
+	$('.btn.btn-success.remove').tooltip(); 
+	$('.btn.btn-primary.add').tooltip();  
 });
 </script>
 
 <div class="row">
 
 
-<?php  		
+<?php  	
+		$this->load->helper('isIdInCart');
 		foreach ($contentsdata as $product) {
 	?>	
 			
@@ -19,8 +22,28 @@ $(document).ready(function(){
 					<div class = "caption">
 						<h4><?= $product->name?></h4>
 						<p>$<?= $product->price?></p>
-						<div><a href="#" class="btn btn-primary" role="button">Add to Chart</a></div>
-						
+						<?php 
+						if (isIdInCart($product->id, $cartcontents))
+						{
+						?>
+						<div><a href="<?= base_url()?>store/removefromcart/<?= $product->id ?>">
+						<button type="button" class="btn btn-success remove" data-toggle="tooltip" data-placement="top" title="Remove from cart">
+						-
+						</button>
+						</a></div>
+						<?php
+						}
+						else
+						{
+						?>
+						<div><a href="<?= base_url()?>store/addtocart/<?= $product->id ?>">
+						<button type="button" class="btn btn-primary add" data-toggle="tooltip" data-placement="top" title="Add to cart"> 
+						+
+						</button>
+						</a></div>
+						<?php
+						} 
+						?>
 					</div>
 			    	
 				</div>
