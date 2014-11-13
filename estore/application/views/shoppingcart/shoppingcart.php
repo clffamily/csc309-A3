@@ -1,5 +1,60 @@
 <script type="text/javascript">
 $(document).ready(function(){
+	//Does shoppingCart exist in cookies
+	var shoppingCart =  getCookie('shoppingCart');
+
+	// Make JSON obj of shopping cart into an array
+	if (shoppingCart) {
+		shoppingCart = JSON.parse(shoppingCart);
+	}
+	else {
+		shoppingCart = [];
+	}
+	
+	//This is used to keep track of changed items in inventory
+	var changedItems =[];
+
+	function removeFromCart (id) {
+		for( var i = 0; i < shoppingCart.length; i++) {
+			if (shoppingCart[i].id == parseInt(id)) {
+				shoppingCart.splice(i,1);
+			}	
+		}
+		deleteCookie('shoppingCart');
+		setCookie('shoppingCart', JSON.stringify(shoppingCart));
+	}
+
+	function changeQuantityInCart (id, quantity) {
+		for( var i = 0; i < shoppingCart.length; i++) {
+			if (shoppingCart[i].id == parseInt(id)) {
+				shoppingCart[i].quantity = quantity;
+			}
+		}
+		setCookie('shoppingCart', JSON.stringify(shoppingCart));
+	}
+	
+	function addToChanged (item_id, item_quantity) {
+		for (var i=0; i < changedItems.length; i++) {
+			if (changedItems[i].id == item_id) {
+				changedItems[i].quantity = item_quantity;
+				return
+			}
+		}
+		var item = {
+			id: item_id,
+			quantity: item_quantity
+		};
+		changedItems.push(item);
+	}
+
+	function removeFromChanged (item_id) {
+		for (var i=0; i < changedItems.length; i++) {
+			if (changedItems[i].id == item_id) {
+				changedItems.splice(i,1);
+			}
+		}
+	}
+	
 	function htmlEncode(value){
 		return $('<div/>').text(value).html();
 	}
@@ -32,9 +87,10 @@ $(document).ready(function(){
 			tablestr += 'oninvalid="setCustomValidity(\'Please enter a positive numeric value\')" ';
 			tablestr += 'onchange="try{setCustomValidity(\'\')}catch(e){}" ';
 			tablestr += 'required= "" value ="'+ htmlEncode(shoppingCart[i].quantity) +'">';
+			tablestr += '<div class="inventoryproductid">' + shoppingCart[i].id + '</div>';
 			tablestr += '</div>' + '</td>';
-		    tablestr += '<td><button type="button" class="btn btn-xs btn-success">' + 
-			'Remove</button></td></tr>';
+		    tablestr += '<td><button type="button" class="btn btn-xs btn-success item">' + 
+	 		'Remove</button></td></tr>';
 		}
 		tablestr += '<tr>';
 		tablestr += '<td></td><td colspan=2><ul class="list-group"><ul class="list-group">';
@@ -44,20 +100,15 @@ $(document).ready(function(){
 	    tablestr += '</tr>';
 		return tablestr;
 	}
-	
-	var shoppingCart =  getCookie('shoppingCart');
 
-	// Determine if shopping cart exists in cookies
-	if (shoppingCart) {
-		shoppingCart = JSON.parse(shoppingCart);
+	function noItemsMsg() {
+		$('.inventory').html('<div class="alert alert-info" role="alert"><h3>Hey, you forgot something!</h3>' +
+		'<p><b>Unfortunately, there are currently no items in your cart. Go back <a href="'+ 
+		'<?= base_url()?>' + '">here</a> and' + 
+		' make a selection from the catalogue, and when you\'re ready to place an order, come back.</b></div>');
 	}
 
-	else {
-		shoppingCart = " ";
-	}
-
-	//alert(makeShoppingCartTable(shoppingCart));
-
+	//Sets up inventory table
 	if(shoppingCart[0] != undefined && shoppingCart[0].id != undefined) {
 		tableInteriorStr = makeShoppingCartTable(shoppingCart);
 		tableStr = '<form id="cartinventory" role="form">';
@@ -68,12 +119,10 @@ $(document).ready(function(){
 		
 		$('.inventory').html(tableStr);
 	}
-	
+
+	//Nothing in the shopping cart
 	else {
-		$('.inventory').html('<div class="alert alert-info" role="alert"><h3>Hey, you forgot something!</h3>' +
-				'<p><b>Unfortunately, there are currently no items in your cart. Go back <a href="'+ 
-				 '<?= base_url()?>' + '">here</a> and' 
-				+ ' make a selection from the catalogue, and when you\'re ready to place an order, come back.</b></div>');
+		noItemsMsg();
 	}
 
 	// Prevents form submission for cartinventory but still preserves validation messages
@@ -87,28 +136,61 @@ $(document).ready(function(){
 
 	 // Changes border color red for quantity field if it differs from original quantity value
 	 $('.form-control.quantity').change(function() {
+		item_id = $(this).parent().find('.inventoryproductid').html();
+		item_quantity = $(this).val();
 		if ($(this).val() != $(this).attr('value')) {
 			$(this).css('border-color', 'red');
+			addToChanged(item_id, item_quantity);
 		}
 		else {
 			$(this).css('border-color', '#CCC');
+			removeFromChanged(item_id);
 		}
 	 });
-	
-	//$('#cartbutton').click(function() {
-		//var tablehtml = $(this).parent().parent().parent().html();
 
-		//alert($('#cartinventory')[0]);
-		
-		//$('#cartinventory').checkValidity;
-		
-		//$('.form-control.quantity').each(function() {
-			//$(this)[0].checkValidity();
-		//});
+	 // Remove button clicked for item, hide row of item, remove it from cookies variable shopping
+	 // cart.
+	$('.btn.btn-xs.btn-success.item').click(function() {
+		var row = $(this).parent().parent();
+		var id = row.find('.inventoryproductid').html();
+		removeFromCart(id);
+		row.hide();
+		$('#shoppingcart').find('.badge').html(shoppingCart.length);
+		if (shoppingCart[0] == undefined || shoppingCart[0].id == undefined) {
+			noItemsMsg();
+		}
+		else {
+			$('.cartprice').html(getTotal(shoppingCart));
+		}
+	});
 
-		//return false;
-		//$('.form-control.quantity').valid();
-	//});
+	$('#cartbutton').click(function() {
+		for (var i = 0; i < changedItems.length; i++) {
+			if (changedItems[i].quantity == 0) {
+				removeFromCart(changedItems[i].id);
+			}
+			else {
+				changeQuantityInCart (changedItems[i].id, changedItems[i].quantity);
+			}
+			$('.inventoryproductid').each(function() {
+				var row = $(this).parent().parent().parent();
+				if ($(this).html() == changedItems[i].id) {
+					if (changedItems[i].quantity == 0) {
+						row.hide();
+						if (shoppingCart[0] == undefined || shoppingCart[0].id == undefined) {
+							noItemsMsg();
+						}
+					}
+					else {
+						var form = $(this).parent();
+						form.find('.form-control.quantity').css('border-color', '#CCC');
+					}
+				}
+			});
+		}
+		$('.cartprice').html(getTotal(shoppingCart));
+	});
+		
 });
 
 

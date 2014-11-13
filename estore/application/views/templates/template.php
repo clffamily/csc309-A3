@@ -22,7 +22,7 @@
 $(document).ready(function(){
 	//Does shoppingCart exist in cookies
 	var shoppingCart =  getCookie('shoppingCart');
-
+	
 	// Determine which items are in shopping cart and change 
 	// their button class
 	if (shoppingCart) {
@@ -70,6 +70,7 @@ $(document).ready(function(){
 					shoppingCart.splice(i,1);
 				}
 			}
+			deleteCookie('shoppingCart');
 			setCookie('shoppingCart', JSON.stringify(shoppingCart));
 			$( this ).attr('class', 'btn btn-xs btn-primary btn-group-sm');
 			$( this ).html('Add to Cart');
@@ -78,11 +79,6 @@ $(document).ready(function(){
 	});
 
 	$('.img').popover();
-});
-</script>
-
-<script>
-$(document).ready(function () {
 	$('li').removeClass();
 	$('#<?= $taskbarLinkId ?>').addClass('active');
 	$('li > a').click(function() {

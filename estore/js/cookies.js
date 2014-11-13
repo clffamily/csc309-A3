@@ -2,7 +2,7 @@ function setCookie(cname, cvalue) {
     var d = new Date();
     d.setTime(d.getTime() + (1*24*60*60*1000));
     var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
+    document.cookie = cname + "=" + cvalue + ";path=/;" + expires;
 }
 
 function getCookie(cname) {
@@ -14,4 +14,8 @@ function getCookie(cname) {
         if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
     }
     return "";
+}
+
+function deleteCookie(name) {
+    document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }

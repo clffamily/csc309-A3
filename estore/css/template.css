@@ -50,3 +50,7 @@
 	display: inline;
 	padding-left: 50px;
 }
+
+.inventoryproductid {
+	display: none;
+}
