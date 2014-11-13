@@ -26,7 +26,7 @@ class Main extends CI_Controller {
     	$data = checkUser($this);
     	$data['title'] = "Shopping Cart";
     	$data['description'] = "";
-    	$data['contents'] = '';
+    	$data['contents'] = 'shoppingcart/shoppingcart.php';
     	$data['taskbarLinkId'] = 'shoppingcart';
     	$data['cartcount'] = shoppingCartCount($this->session->userdata('shoppingCart'));
     	$this->load->view('templates/template.php', $data);

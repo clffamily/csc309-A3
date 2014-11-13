@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Baseball Cards Store</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+<link rel = "stylesheet" href="<?= base_url()?>css/template.css">
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+
+</head>
+<body>
+
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -31,6 +50,9 @@ $(document).ready(function(){
 		if($(this).attr('class') == 'btn btn-xs btn-primary btn-group-sm') {
 			var shoppingCartItem = 	{
 					id: $( this ).parent().parent().find('.shoppingcartproductid').html(),
+					name: $( this ).parent().parent().find('.shoppingcartproductname').html(),
+					price: $( this ).parent().parent().find('.shoppingcartproductprice').html(),
+					photo: $( this ).parent().parent().find('.shoppingcartproductphoto').html(),
 					quantity: 1
 					};
 			shoppingCart.push(shoppingCartItem);
@@ -59,33 +81,34 @@ $(document).ready(function(){
 });
 </script>
 
-<div class="row">
+<script>
+$(document).ready(function () {
+	$('li').removeClass();
+	$('#<?= $taskbarLinkId ?>').addClass('active');
+	$('li > a').click(function() {
+    	$('li').removeClass();
+    	$(this).parent().addClass('active');
+	});
+});
 
-<?php  	
-		$this->load->helper('isIdInCart');
-		foreach ($contentsdata as $product) {
-	?>	
-			
-			<div class="col-xs-6 col-md-3">			
-				<div  class="thumbnail">
-					<img class="img" src="<?= base_url()?>images/product/<?= $product->photo_url?>" 
-					data-content="<?= $product->description?>" data-toggle="popover" 
-					data-placement="top" title="Description" data-trigger="hover"/>
-					<div class = "caption">
-						<h4><?= $product->name?></h4>
-						<p>$<?= $product->price?></p>
-					</div>
-			    	<div class="btn-group">
-					<button type="button" class="btn btn-xs btn-primary btn-group-sm" data-toggle="tooltip" data-placement="top"> 
-					Add to Cart
-					</button>
-					</div>
-					<div class="shoppingcartproductid"><?= $product->id?></div>
-				</div>
-				
-    		</div>
-	<?php 
-		}
-?>
+</script>
 	
-</div>
+	<?php $this->load->view($taskbar)?>
+	<div class="container-all">
+	<?php 
+	if (isset($message)) { 
+	?>
+	<div class="alert alert-danger" role="alert"><?= $message ?></div>
+	<?php
+	}
+	?>
+	<p>
+	<?php $this->load->view('templates/template_main.php')?>
+	</div>
+<script src="<?= base_url() ?>js/cookies.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

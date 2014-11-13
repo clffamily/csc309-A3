@@ -23,3 +23,30 @@
 .shoppingcartproductid {
 	display: none;
 }
+
+.shoppingcartproductname {
+	display: none;
+}
+.shoppingcartproductprice {
+	display: none;
+}
+.shoppingcartproductphoto {
+	display: none;
+}
+
+.cartphoto {
+	width: 120px;	
+}
+
+.form-control.quantity {
+	width: 70px;
+}
+
+.cart > tbody > tr > td {
+	width: 10%;
+}
+
+.cartprice {
+	display: inline;
+	padding-left: 50px;
+}
