@@ -27,10 +27,12 @@ $(document).ready(function(){
 			tablestr += shoppingCart[i].photo + "'></td>";
 			tablestr += "<td>" + htmlEncode(shoppingCart[i].name) + "</td>"; 
 			tablestr += "<td>$" + price.toFixed(2) + "</td>";
-			tablestr += '<td> <div class="form-group">' +
-		    '<input type="text" class="form-control quantity" value ="'+ 
-		    htmlEncode(shoppingCart[i].quantity) +'">' +
-		    '</div>' + '</td>';
+			tablestr += '<td> <div class="form-group">';
+			tablestr += '<input type="text" pattern="\\d+" class="form-control quantity" ';
+			tablestr += 'oninvalid="setCustomValidity(\'Please enter a positive numeric value\')" ';
+			tablestr += 'onchange="try{setCustomValidity(\'\')}catch(e){}" ';
+			tablestr += 'required= "" value ="'+ htmlEncode(shoppingCart[i].quantity) +'">';
+			tablestr += '</div>' + '</td>';
 		    tablestr += '<td><button type="button" class="btn btn-xs btn-success">' + 
 			'Remove</button></td></tr>';
 		}
@@ -38,12 +40,10 @@ $(document).ready(function(){
 		tablestr += '<td></td><td colspan=2><ul class="list-group"><ul class="list-group">';
 	    tablestr += '<li class="list-group-item disabled"><b>Total Price</b><div class="cartprice">'
 		tablestr += getTotal(shoppingCart) + '</div></li></ul></td>';
-		tablestr +=	'<td></td><td><button type="button" class="btn btn-md btn-primary">Update Cart</button></td>';
+		tablestr +=	'<td></td><td><input id="cartbutton" class="btn btn-primary cart" type="submit" value="Update Cart"></input></td>';
 	    tablestr += '</tr>';
 		return tablestr;
 	}
-
-	
 	
 	var shoppingCart =  getCookie('shoppingCart');
 
@@ -60,10 +60,11 @@ $(document).ready(function(){
 
 	if(shoppingCart[0] != undefined && shoppingCart[0].id != undefined) {
 		tableInteriorStr = makeShoppingCartTable(shoppingCart);
-		tableStr = '<div class="panel panel-default">';
+		tableStr = '<form id="cartinventory" role="form">';
+		tableStr += '<div class="panel panel-default">';
 		tableStr += '<div class="panel-heading"><h3>Cart Inventory</h3></div>';
 		tableStr += '<table class="table cart">' + tableInteriorStr;
-		tableStr += '</table></div>';
+		tableStr += '</table></div></form>';
 		
 		$('.inventory').html(tableStr);
 	}
@@ -74,7 +75,40 @@ $(document).ready(function(){
 				 '<?= base_url()?>' + '">here</a> and' 
 				+ ' make a selection from the catalogue, and when you\'re ready to place an order, come back.</b></div>');
 	}
+
+	// Prevents form submission for cartinventory but still preserves validation messages
+	$('#cartinventory').on( "submit", function( event ) {
+    	if ( this.checkValidity && !this.checkValidity() ) {
+        	$( this ).find( ":invalid" ).first().focus();
+        	event.preventDefault();
+        }
+        return false;
+     });
+
+	 // Changes border color red for quantity field if it differs from original quantity value
+	 $('.form-control.quantity').change(function() {
+		if ($(this).val() != $(this).attr('value')) {
+			$(this).css('border-color', 'red');
+		}
+		else {
+			$(this).css('border-color', '#CCC');
+		}
+	 });
 	
+	//$('#cartbutton').click(function() {
+		//var tablehtml = $(this).parent().parent().parent().html();
+
+		//alert($('#cartinventory')[0]);
+		
+		//$('#cartinventory').checkValidity;
+		
+		//$('.form-control.quantity').each(function() {
+			//$(this)[0].checkValidity();
+		//});
+
+		//return false;
+		//$('.form-control.quantity').valid();
+	//});
 });
 
 
