@@ -28,7 +28,9 @@ $(document).ready(function () {
 
 </script>
 	
-	<?php $this->load->view($taskbar)?>
+	<?php if (isset($taskbar)) {
+		$this->load->view($taskbar);
+	}?>
 	<div class="container-all">
 	<?php 
 	if (isset($message)) { 

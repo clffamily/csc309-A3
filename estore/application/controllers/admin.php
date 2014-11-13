@@ -66,7 +66,6 @@ class Admin extends CI_Controller{
 		$users = $this->user_model->getAll();
 		$data['taskbarLinkId'] = 'admin';
 		$data['users']=$users;
-		//$this->load->view('admin/users/list.php',$data);
 		$this->load->view('admin/admin_template.php',$data);
 	}
 	
