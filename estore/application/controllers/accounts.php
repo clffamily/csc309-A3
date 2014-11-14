@@ -3,6 +3,9 @@ session_start();
 class Accounts extends CI_Controller {
 	
 	function login() {
+		if ($this->session->userdata('logged_in')) {
+			redirect('', 'refresh');
+		}
 		$this->load->helper('checkuser');
 		$this->load->model('user_model');
 		$this->load->library('form_validation');

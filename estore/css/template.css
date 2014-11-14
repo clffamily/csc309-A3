@@ -54,3 +54,8 @@
 .inventoryproductid {
 	display: none;
 }
+
+.form-group.credit {
+	padding-left: 190px;
+	padding-right: 50px;
+}

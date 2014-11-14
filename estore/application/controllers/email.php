@@ -9,8 +9,8 @@ class Email extends CI_Controller {
 				'protocol' => 'smtp',
 				'smtp_host' => 'ssl://smtp.googlemail.com',
 				'smtp_port' => 465,
-				'smtp_user' => 'georgelfcai@gmail.com', //Change the email account full name
-				'smtp_pass' => '',                      //Change to email password
+				'smtp_user' => 'j2armstrong@gmail.com', //Change the email account full name
+				'smtp_pass' => 'destiny82',                      //Change to email password
 				'mailtype'  => 'html',
 				'charset'   => 'iso-8859-1'
 		);
@@ -30,8 +30,8 @@ class Email extends CI_Controller {
 		$email = $this->load->view('templates/template.php',$data,TRUE);
 		
 		//Send the emails
-		$this->email->from('georgelfcai@gmail.com', 'George');  //Change here
-		$this->email->to('georgelfcai@gmail.com');		        //Change here
+		$this->email->from('j2armstrong@gmail.com', 'George');  //Change here
+		$this->email->to('j2armstrong@gmail.com');		        //Change here
 		$this->email->subject('Order Confirmation');
 		$this->email->message($email);
 		//$this->email->attach('/path/to/file'); //Attach files

@@ -108,17 +108,47 @@ $(document).ready(function(){
 		' make a selection from the catalogue, and when you\'re ready to place an order, come back.</b></div>');
 	}
 
-	//Sets up inventory table
 	if(shoppingCart[0] != undefined && shoppingCart[0].id != undefined) {
+		//Set up for inventory table
 		tableInteriorStr = makeShoppingCartTable(shoppingCart);
 		tableStr = '<form id="cartinventory" role="form">';
 		tableStr += '<div class="panel panel-default">';
 		tableStr += '<div class="panel-heading"><h3>Cart Inventory</h3></div>';
 		tableStr += '<table class="table cart">' + tableInteriorStr;
 		tableStr += '</table></div></form>';
-		
 		$('.inventory').html(tableStr);
+
+		//Set up for checkout form
+		checkoutForm = '<?php 	$attributes = array('role' => 'form'); 
+								echo form_open("", $attributes); ?>';
+		checkoutForm += '<div class="panel panel-default">';
+		checkoutForm += '<div class="panel-heading"><h3>Checkout</h3></div>';
+		checkoutForm += '<p><div class="form-group credit">'
+		checkoutForm +=	'<label for="creditnumber">Credit Card Number</label>';
+		checkoutForm += '<?php 
+				$creditcardnumber_type = array('type'=>'text', 'class'=>'form-control', 'pattern'=>'[0-9]{4}[-][0-9]{4}[-][0-9]{4}[-][0-9]{4}',
+				'oninvalid'=>"setCustomValidity(\'Please enter a credit card number with 16 digits\')",
+				'onchange'=>"try{setCustomValidity(\'\')}catch(e){}",
+				'id'=>'creditnumber', 'name'=>'creditnumber', 'required'=>'', 'placeholder'=>'XXXX-XXXX-XXXX-XXXX');
+				echo form_input($creditcardnumber_type);
+		?>';
+		checkoutForm +=	'<br/><label for="creditdate">Expiry Date (MM/YY)</label>';
+		checkoutForm += '<?php 
+				$creditcardexpiry_type = array('type'=>'text', 'class'=>'form-control', 'pattern'=>'[0-9]{2}[/][0-9]{2}',
+				'oninvalid'=>"setCustomValidity(\'The expiry date is not formatted correctly\')",
+				'onchange'=>"try{setCustomValidity(\'\')}catch(e){}",
+				'id'=>'creditexpiry', 'name'=>'creditnumber', 'required'=>'', 'placeholder'=>'MM/DD');
+				echo form_input($creditcardexpiry_type);
+		?>';
+		checkoutForm += '<br/><?php
+				$submit_type = array('type'=>'submit', 'class'=>'btn btn-primary checkout', 'value'=>'Submit Order');
+				echo form_submit($submit_type);
+		?>'
+		checkoutForm += '</div>';
+		checkoutForm += '<?php echo form_close(); ?>';
+		$('.checkout').html(checkoutForm);
 	}
+
 
 	//Nothing in the shopping cart
 	else {
@@ -195,5 +225,23 @@ $(document).ready(function(){
 
 
 </script>
-
+<?php 
+if($login == 'anon') {
+?>
+<div class="alert alert-warning" role="alert">
+<h3>One last thing!</h3>
+<p><b>You either forgot to login, or you don't have an account with up. Go 
+<a href= '<?= base_url()?>main/createuser'>here</a> and make a new user account. Or else,
+simply login above.
+</div>
+<?php 
+}
+?>
 <div class="inventory"></div>
+<?php
+if($login != 'anon') {
+?>
+<div class="checkout"></div>
+<?php 
+}
+?>
