@@ -10,7 +10,7 @@ class Email extends CI_Controller {
 				'smtp_host' => 'ssl://smtp.googlemail.com',
 				'smtp_port' => 465,
 				'smtp_user' => 'j2armstrong@gmail.com', //Change the email account full name
-				'smtp_pass' => 'destiny82',                      //Change to email password
+				'smtp_pass' => '',                      //Change to email password
 				'mailtype'  => 'html',
 				'charset'   => 'iso-8859-1'
 		);
