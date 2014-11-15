@@ -6,10 +6,14 @@ Class Order_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	function getAllItems($id){
+		$query = $this->db->get_where('order_items', array('order_id' => $id));
+		return $query->result_array('Order');
+	}
+	
 	function get($id)
 	{
 		$query = $this->db->get_where('orders',array('id' => $id));
-	
 		return $query->result_array();
 	}
 	
@@ -35,7 +39,6 @@ Class Order_model extends CI_Model {
 		//querying after insert to get order #id
 		$query = $this->db->get_where("orders",array('order_date' => $mysqlDate, 'order_time' => $mysqlTime));
 		$order_id = $query->result_array();
-		print_r($order_id);
 		$order_id = $order_id[0]['id'];
 		
 		//inserts each item in shopping cart connected with order_id into database
@@ -46,6 +49,7 @@ Class Order_model extends CI_Model {
 					'quantity' => $item['quantity'])
 			);
 		}
+		return $order_id;
 	}
 }
 

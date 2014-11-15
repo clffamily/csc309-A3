@@ -8,14 +8,25 @@ class Orders extends CI_Controller {
 			redirect('', 'refresh');
 		}
 		$this->load->helper('checkuser');
+		$data = checkUser($this);
+		$data['title'] = "Shopping Cart";
+		$data['description'] = "";
+		$data['contents'] = 'shoppingcart/shoppingcart.php';
+		$data['taskbarLinkId'] = 'shoppingcart';
+		
+		$this->load->helper('email');
 		$this->load->model('order_model');
 		$this->load->library('form_validation');
+		$this->form_validation->set_message('check_expiry', 'Your credit card has expired, or the entry was invalid. Please try again.');
 		$this->form_validation->set_rules('creditnumber','Credit Card Number','required');
 		$this->form_validation->set_rules('creditexpiry','Expiry Date','required|callback_check_expiry');
+		
 		if($this->form_validation->run() == FALSE)
 		{
-			echo 'invalid exp';
+			$data['checkouterror'] = validation_errors();
+			$this->load->view('templates/template.php', $data);
 		}
+		
 		else {
 			//formatted inputs from html converted to appropriate types to match database
 			$creditcardnumber_withdashes = $this->input->post('creditnumber');
@@ -24,7 +35,6 @@ class Orders extends CI_Controller {
 			$shoppingcart_json = $this->input->post('formshoppingcart');
 			
 			$shoppingcart = json_decode($shoppingcart_json, true);
-			print_r($shoppingcart);
 			$total = str_replace("$", "", $total_withdollarsign);
 			$creditcardnumber = str_replace("-", "", $creditcardnumber_withdashes);
 			$expirySplit = explode('/', $creditcardexpiry);
@@ -34,9 +44,14 @@ class Orders extends CI_Controller {
 			//get customer id
 			$sessionData = $this->session->userdata('logged_in');
 			$userId = $sessionData['id'];
+			$userEmail = $sessionData['email'];
 			
-			$this->order_model->insert_order($userId, $creditcardnumber, $creditcardmonth, 
+			$orderId = $this->order_model->insert_order($userId, $creditcardnumber, $creditcardmonth, 
 											$creditcardyear, $total, $shoppingcart);
+			emailHelper($this, $userEmail, $orderId);
+			$data['successmsg'] = "Great, your order has been accepted and is being processed! Check your 
+									email to find your confirmation and order summary.";
+			$this->load->view('templates/template.php', $data);
 		}
 	}
 
@@ -50,6 +65,9 @@ class Orders extends CI_Controller {
 		else if ($expirySplit[1] == $currentYear && $expirySplit[0] < $currentMonth) {
 			return False;
 		}
+		else if ($expirySplit[0] < 0 || $expirySplit[0] > 12) {
+			return False;
+		} 
 		else {
 			return True;
 		}

@@ -28,7 +28,6 @@ class Main extends CI_Controller {
     	$data['description'] = "";
     	$data['contents'] = 'shoppingcart/shoppingcart.php';
     	$data['taskbarLinkId'] = 'shoppingcart';
-    	$data['cartcount'] = shoppingCartCount($this->session->userdata('shoppingCart'));
     	$this->load->view('templates/template.php', $data);
     }
     

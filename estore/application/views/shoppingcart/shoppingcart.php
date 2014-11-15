@@ -235,12 +235,33 @@ $(document).ready(function(){
 		$('.cartprice').html(getTotal(shoppingCart));
 	});
 	$('#formshoppingcart').attr('value', JSON.stringify(shoppingCart));
-	$('#formtotal').attr('value', getTotal(shoppingCart));		
+	$('#formtotal').attr('value', getTotal(shoppingCart));
+	<?php 
+	if(isset($successmsg)) {
+	?>
+	$('.inventory').hide();
+	$('.checkout').hide();
+	$('.alert.alert-warning').hide();
+	$('.alert.alert-info').hide();
+	shoppingCart = [];		
+	setCookie('shoppingCart', JSON.stringify(shoppingCart));
+	$('#shoppingcart').find('.badge').html(shoppingCart.length);
+	<?php 
+	}
+	?>
 });
 
 
 </script>
 <?php 
+if(isset($successmsg)) {
+?>
+<div class="alert alert-success" role="alert">
+<h3>Success!</h3>
+<p><b><?= $successmsg ?></b>
+</div>	
+<?php
+}
 if($login == 'anon') {
 ?>
 <div class="alert alert-warning" role="alert">
@@ -251,11 +272,22 @@ simply login above.</b>
 </div>
 <?php 
 }
+if(isset($checkouterror) && $checkouterror){
 ?>
+<div class="alert alert-danger" role="alert">
+<?= $checkouterror ?>
+</div>
+
+<?php 
+}
+?>
+
 <div class="inventory"></div>
+
 <?php
 if($login != 'anon') {
 ?>
+
 <div class="checkout"></div>
 <?php 
 }
