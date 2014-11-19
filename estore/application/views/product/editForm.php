@@ -40,7 +40,6 @@
 
 <?php	
 	$attributes = array( 'name' => 'submit', 'class' => 'btn btn-default', 'value' => 'Save' );	
-	//echo form_submit('submit', 'Save');
 	echo form_submit($attributes);
 	echo form_close();
 ?>	

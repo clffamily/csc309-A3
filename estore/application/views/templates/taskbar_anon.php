@@ -1,6 +1,5 @@
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -14,13 +13,13 @@
 			</div>
 		</div>
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
+		<!-- These are the taskbar elements, this is different from both the user and admin taskbars because there
+		     are login and password fields to be validated, and the possibility of creating a new user-->
 		<div id="navbar"
 			class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li id="catalogue"><?php echo anchor("/",'Catalogue') ?></li>
 				<li id="shoppingcart"><?php echo anchor("main/shoppingcart",'Shopping Cart <span class="badge">0</span>') ?></li>
-				<!-- <li id="checkout"><?php echo anchor("main/checkout",'Checkout') ?></li> -->
 			</ul>
 			<?php 
 			$attributes = array('class' => 'navbar-form navbar-right', 'role' => 'form');

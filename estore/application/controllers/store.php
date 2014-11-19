@@ -7,15 +7,8 @@ class Store extends CI_Controller {
     function __construct() {
     		// Call the Controller constructor
 	    	parent::__construct();
-	    	
-	    	
 	    	$config['upload_path'] = './images/product/';
-	    	$config['allowed_types'] = 'gif|jpg|png';
-/*	    	$config['max_size'] = '100';
-	    	$config['max_width'] = '1024';
-	    	$config['max_height'] = '768';
-*/
-	    		    	
+	    	$config['allowed_types'] = 'gif|jpg|png';	    		    	
 	    	$this->load->library('upload', $config);
 	    	
     }
@@ -60,16 +53,12 @@ class Store extends CI_Controller {
 		else {
 			if ( !$fileUploadSuccess) {
 				$data['fileerror'] = $this->upload->display_errors();
-				//$data['title'] = 'Add Products';
 				$data['taskbarLinkId'] = 'admin';
 				$data['addProduct'] = 'True';
 				$this->load->view('admin/admin_template.php',$data);
-				//$this->load->view('store/index');
 				return;
 			}
 			
-			//$this->load->view('product/newForm.php');
-			//$data['title'] = 'Add Products';
 			$data['taskbarLinkId'] = 'admin';
 			$data['addProduct'] = 'True';
 			$this->load->view('admin/admin_template.php',$data);

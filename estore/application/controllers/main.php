@@ -3,23 +3,17 @@ session_start();
 
 class Main extends CI_Controller {
 	
+	/*
+	 * Constructor function
+	 */
     function __construct() {
     		// Call the Controller constructor
 	    	parent::__construct();
     }
 	
-    function checkout() {
-    	$this->load->helper('checkuser');
-    	$this->load->helper('shoppingcartcount');
-    	$data = checkUser($this);
-    	$data['title'] = "Checkout";
-    	$data['description'] = "";
-    	$data['contents'] = '';
-    	$data['taskbarLinkId'] = 'checkout';
-    	$data['cartcount'] = shoppingCartCount($this->session->userdata('shoppingCart'));
-    	$this->load->view('templates/template.php', $data);    	
-    }
-    
+    /*
+     * Function to display the shopping cart
+     */
     function shoppingCart() {
     	$this->load->helper('checkuser');
     	$this->load->helper('shoppingcartcount');
@@ -31,6 +25,9 @@ class Main extends CI_Controller {
     	$this->load->view('templates/template.php', $data);
     }
     
+    /*
+     * Function to display elements for creating a new user
+     */
     function createUser() {
     	$this->load->helper('checkuser');
     	$this->load->helper('shoppingcartcount');
@@ -43,6 +40,10 @@ class Main extends CI_Controller {
     	$this->load->view('templates/template.php', $data);
     }
     
+    /*
+     * A function for displaying the initial page, which is essentially the catalogue of 
+     * cards.
+     */
 	function index() {
 		$this->load->helper('checkuser');
 		$this->load->helper('shoppingcartcount');

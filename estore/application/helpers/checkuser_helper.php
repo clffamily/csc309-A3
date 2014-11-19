@@ -1,4 +1,10 @@
 <?php
+/*
+ * Given a controller object, returns data array with a variable 'taskbar' associated with 
+ * taskbar file name related to the type of user based on user data in the sessions object.
+ * Also data array contains a variable 'login' that is the type of user in he sessions object
+ * (admin, anon, user).
+ */
 function checkUser($obj) {
 	if($obj->session->userdata('logged_in'))
 	{

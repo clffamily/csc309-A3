@@ -1,11 +1,16 @@
 <?php
+/*
+ * Takes in a controller object, a user's email and an order id number and sends an
+ * email to the user with a breakdown of an order based on values associated with integer order_id
+ * found in the orders and order_items tables in the database.
+ */
 function emailHelper($obj, $user_email, $order_id) {
 	$config = Array(
 			'protocol' => 'smtp',
 			'smtp_host' => 'ssl://smtp.googlemail.com',
 			'smtp_port' => 465,
-			'smtp_user' => '', //Change the email account full name
-			'smtp_pass' => '',                      //Change to email password
+			'smtp_user' => '', //Change the email account 
+			'smtp_pass' => '', //Change the email password
 			'mailtype'  => 'html',
 			'charset'   => 'iso-8859-1'
 	);

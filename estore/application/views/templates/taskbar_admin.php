@@ -1,6 +1,5 @@
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -14,7 +13,8 @@
 			</div>
 		</div>
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
+		<!-- These are the taskbar elements, this is similar to the normal user taskbar, except that is has
+			 a dropdown admin menu -->
 		<div id="navbar"
 			class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">

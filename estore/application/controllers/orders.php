@@ -3,6 +3,11 @@ session_start();
 
 class Orders extends CI_Controller {
 	
+	/*
+	 * This function deals with the processing of a checkout. This means that it 
+	 * deals with validations of input field for a checkout, adding the order to
+	 * the database, and finally, returning a success message if all has gone well.
+	 */
 	function checkout() {
 		if (!$this->session->userdata('logged_in')) {
 			redirect('', 'refresh');
@@ -55,6 +60,9 @@ class Orders extends CI_Controller {
 		}
 	}
 
+	/*
+	 * Function used in validation of the credit card expiration date
+	 */
 	function check_expiry($creditexpiry) {
 		$currentYear = date("y");
 		$currentMonth = date("m");
@@ -65,7 +73,7 @@ class Orders extends CI_Controller {
 		else if ($expirySplit[1] == $currentYear && $expirySplit[0] < $currentMonth) {
 			return False;
 		}
-		else if ($expirySplit[0] < 0 || $expirySplit[0] > 12) {
+		else if ($expirySplit[0] < 1 || $expirySplit[0] > 12) {
 			return False;
 		} 
 		else {

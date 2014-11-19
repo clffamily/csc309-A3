@@ -1,12 +1,10 @@
 <h2>Product Table</h2>
 <?php 
 		echo "<p>" . anchor('admin/addProduct','Add New') . "</p>";
-		//echo anchor('admin/addProduct','Add New');
 ?>
 <table class="table table-hover">
 
 <?php  
-		//echo "<table>";
 		echo "<tr><th>Name</th><th>Description</th><th>Price</th><th>Photo</th><th>Operations</th><th></th><th></th></tr>";
 		
 		foreach ($products as $product) {
