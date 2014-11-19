@@ -18,6 +18,29 @@
 <body>
 <script>
 $(document).ready(function () {
+	//Does shoppingCart exist in cookies
+	var shoppingCart =  getCookie('shoppingCart');
+	
+	// Determine which items are in shopping cart and change 
+	// their button class
+	if (shoppingCart) {
+		shoppingCart = JSON.parse(shoppingCart);
+		$('.thumbnail').each(function() {
+			for( var i = 0; i < shoppingCart.length; i++) {
+				if (shoppingCart[i].id == parseInt($( this ).find('.shoppingcartproductid').html())) {
+					$( this ).find('button').attr('class', 'btn btn-xs btn-success btn-group-sm');
+					$( this ).find('button').html('Remove From Cart');
+				}
+			}
+		});
+	}
+	else {
+		shoppingCart = [];
+	}
+
+	// set badge on shopping cart link to number of types of card in cart
+	$('#shoppingcart').find('.badge').html(shoppingCart.length);
+	
 	$('li').removeClass();
 	$('#<?= $taskbarLinkId ?>').addClass('active');
 	$('li > a').click(function() {
@@ -94,6 +117,7 @@ $(document).ready(function () {
 	
 	</div>
 	</div>
+<script src="<?= base_url() ?>js/cookies.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
