@@ -3,10 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>Baseball Cards Store</title>
-<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-
-<!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
 
 <link rel = "stylesheet" href="<?= base_url()?>css/template.css">
@@ -43,6 +40,7 @@ $(document).ready(function(){
 	// set badge on shopping cart link to number of types of card in cart
 	$('#shoppingcart').find('.badge').html(shoppingCart.length);
 	
+	//deals with event where add/remove from cart button is clicked
 	$('.thumbnail').find('button').click(function() {
 
 		// Add card to cart by getting shopping cart adding card id to cart and then adding the cart
@@ -78,9 +76,14 @@ $(document).ready(function(){
 		}
 	});
 
+	//built-in for description to be shown when mouse hovers over image
 	$('.img').popover();
 	$('li').removeClass();
+
+	//deals with identifying what kind of user the user is and displaying the appropriate task bar
 	$('#<?= $taskbarLinkId ?>').addClass('active');
+
+	//this deals with appearance of menu links in the taskbar
 	$('li > a').click(function() {
     	$('li').removeClass();
     	$(this).parent().addClass('active');

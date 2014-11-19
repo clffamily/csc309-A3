@@ -14,6 +14,8 @@ $(document).ready(function(){
 	//This is used to keep track of changed items in inventory
 	var changedItems =[];
 
+	//given an id integer, the item with the same id is removed from the shoppingCart and
+	//the cookie is updated
 	function removeFromCart (id) {
 		for( var i = 0; i < shoppingCart.length; i++) {
 			if (shoppingCart[i].id == parseInt(id)) {
@@ -26,6 +28,8 @@ $(document).ready(function(){
 		$('#formtotal').attr('value', getTotal(shoppingCart));
 	}
 
+	//given an id integer and a quantity integer, if the item id in shopping cart matches
+	//id variable then the items quantity is set to the new quantity.
 	function changeQuantityInCart (id, quantity) {
 		for( var i = 0; i < shoppingCart.length; i++) {
 			if (shoppingCart[i].id == parseInt(id)) {
@@ -36,7 +40,10 @@ $(document).ready(function(){
 		$('#formshoppingcart').attr('value', JSON.stringify(shoppingCart));
 		$('#formtotal').attr('value', getTotal(shoppingCart)); 
 	}
-	
+
+	//given an integer item_id and integer item_quantity either update the object in
+	//changed array with a matching id to the quantity, item_quantity, or create a new
+	//object with id set to item_id and quantity set to item_quantity 
 	function addToChanged (item_id, item_quantity) {
 		for (var i=0; i < changedItems.length; i++) {
 			if (changedItems[i].id == item_id) {
@@ -51,6 +58,8 @@ $(document).ready(function(){
 		changedItems.push(item);
 	}
 
+	//if there exists some object in changedItems with id equal to integer item_id
+	//remove it from changedItems array
 	function removeFromChanged (item_id) {
 		for (var i=0; i < changedItems.length; i++) {
 			if (changedItems[i].id == item_id) {
@@ -59,14 +68,13 @@ $(document).ready(function(){
 		}
 	}
 	
+	//convert special symbols into html characters for holding in cookies
 	function htmlEncode(value){
 		return $('<div/>').text(value).html();
 	}
 
-	function htmlDecode(value){
-		return $('<div/>').html(value).text();
-	}
-
+	//get total price of all items in shoppingCart based on individual price and
+	//quantity values
 	function getTotal(shoppingCart) {
 		var total = 0;
 		for (var i=0; i < shoppingCart.length; i++) {
@@ -78,6 +86,8 @@ $(document).ready(function(){
 		return "$" + total.toFixed(2);
 	}
 
+	//essentially produces the table of the entire inventory based on objects contained
+	//in the shoppingCart array
 	function makeShoppingCartTable(shoppingCart) {
 		tablestr = "<th></th><th>Name</th><th>Price</th><th>Quantity</th><th></th>";
 		for (var i=0; i < shoppingCart.length; i++) {
@@ -105,6 +115,7 @@ $(document).ready(function(){
 		return tablestr;
 	}
 
+	//function to output message that no item are currently in the shopping cart
 	function noItemsMsg() {
 		$('.inventory').html('<div class="alert alert-info" role="alert"><h3>Hey, you forgot something!</h3>' +
 		'<p><b>Unfortunately, there are currently no items in your cart. Go back <a href="'+ 
@@ -112,6 +123,7 @@ $(document).ready(function(){
 		' make a selection from the catalogue, and when you\'re ready to place an order, come back.</b></div>');
 	}
 
+	//checks if shoppingCart is empty or not
 	if(shoppingCart[0] != undefined && shoppingCart[0].id != undefined) {
 		//Set up for inventory table
 		tableInteriorStr = makeShoppingCartTable(shoppingCart);
@@ -208,6 +220,9 @@ $(document).ready(function(){
 		}
 	});
 
+	//This deals with the updatecart button, so if someone has altered the quantity of an
+	//item, once the button is clicked the shoppingCart cookie variable is updated, along
+	//with any other elements associated with the shopping cart 
 	$('#cartbutton').click(function() {
 		for (var i = 0; i < changedItems.length; i++) {
 			if (changedItems[i].quantity == 0) {
@@ -234,8 +249,16 @@ $(document).ready(function(){
 		}
 		$('.cartprice').html(getTotal(shoppingCart));
 	});
+	
+	//a hidden input value submitted during checkout
 	$('#formshoppingcart').attr('value', JSON.stringify(shoppingCart));
+
+	//a hidden input value submitted during checkout
 	$('#formtotal').attr('value', getTotal(shoppingCart));
+
+	//essentially this is the case where an order has been submitted successfully. 
+	//all elements pertaining to the inventory and checkout are hidden from view and
+	//the cookie is immediately replaced with an empty shopping cart. 
 	<?php 
 	if(isset($successmsg)) {
 	?>
@@ -250,7 +273,6 @@ $(document).ready(function(){
 	}
 	?>
 });
-
 
 </script>
 <?php 

@@ -61,9 +61,7 @@
 				<li id="createuser"><?php echo anchor("main/createuser",'Create A New Account') ?></li>
 			</ul>
 		</div>
-		<!-- /.navbar-collapse -->
 	</div>
-	<!-- /.container-fluid -->
 </nav>
 
 

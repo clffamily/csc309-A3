@@ -31,9 +31,7 @@
 			echo form_close();
 			?>
 		</div>
-		<!-- /.navbar-collapse -->
 	</div>
-	<!-- /.container-fluid -->
 </nav>
 
 

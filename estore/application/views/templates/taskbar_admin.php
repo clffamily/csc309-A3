@@ -26,9 +26,8 @@
             
             <li><?php echo anchor('admin/addProduct','Add Products') ?></li>
             <li><?php echo anchor('admin/editProduct','Edit Products') ?></li>
-            <li><?php echo anchor('admin/getOrders','Remover Orders') ?></li>
-            <li><?php echo anchor('admin/getUsers','Remover Users') ?></li>
-            <li><?php echo anchor('email/sendEmail/1','Email Test') ?></li>
+            <li><?php echo anchor('admin/getOrders','Remove Orders') ?></li>
+            <li><?php echo anchor('admin/getUsers','Remove Users') ?></li>
           </ul>
         </li>
 			</ul>
@@ -42,9 +41,7 @@
 			echo form_close();
 			?>
 		</div>
-		<!-- /.navbar-collapse -->
 	</div>
-	<!-- /.container-fluid -->
 </nav>
 
 
