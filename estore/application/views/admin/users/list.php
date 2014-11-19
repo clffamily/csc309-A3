@@ -1,10 +1,13 @@
+<!-- This file displays the user list of admin user-->
+<!-- Admin user can delete users from this page, except self(admin) -->
+
+
 <h2>User List</h2>
 <?php
 ?>
 <table class="table table-hover">
 
 <?php  
-		//echo "<table>";
 		echo "<tr><th>User ID</th><th>First Name</th><th>Last Name</th><th>User Name</th>";
 		echo "<th>Password</th><th>Email</th><th>Delete</th></tr>";
 		

@@ -81,7 +81,8 @@ class Store extends CI_Controller {
 	
 	function update($id) {
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('name','Name','required');
+		//$this->form_validation->set_rules('name','Name','required');
+		$this->form_validation->set_rules('name','Name','required|is_unique[products.name]');		
 		$this->form_validation->set_rules('description','Description','required');
 		$this->form_validation->set_rules('price','Price','required');
 		
@@ -105,7 +106,10 @@ class Store extends CI_Controller {
 			$product->description = set_value('description');
 			$product->price = set_value('price');
 			$data['product']=$product;
-			$this->load->view('product/editForm.php',$data);
+			$data['editsingleproduct'] = "True";
+			//$this->load->view('product/editForm.php',$data);
+			$this->load->view('admin/admin_template.php',$data);
+			//redirect('admin/editSingleProduct/');
 		}
 	}
     	

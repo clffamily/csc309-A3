@@ -1,3 +1,5 @@
+<!-- This is admin user template. The template will be used when the admin user logins -->
+
 <!DOCTYPE html>
 <html>
 <head>
