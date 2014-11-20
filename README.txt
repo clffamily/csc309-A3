@@ -14,7 +14,7 @@ g2jarmst, c4cailio
 1. AMI ID: ami-faf96992
 2. Location within AMI: /var/www/html/estore
 3. Browser: Latest version of Chrome or Safari
-
+4. Screen/Window size: 1280 x 800
 
 ******************************************
 ***********   Description   **************
@@ -25,7 +25,7 @@ g2jarmst, c4cailio
 
 2. Shopping Cart
 	1. Cart Inventory
-		The cart inventory will display the products user select. The user will be able to modify the quantity of the products in the inventory. The total price will be shown.
+		The cart inventory will display the products the user selects. The user will be able to modify the quantity of the products in the inventory. The total price will be shown.
 	2. Checkout
 		The user has to login before checkout. After checking out, an email will be sent to the user email.
 
@@ -37,7 +37,7 @@ g2jarmst, c4cailio
 		*************************************
 		*  username:admin password:testing  *
 		*************************************
-	2. The functionalities of the admin will be visible once the amin user logins in. The admin drop-down menu will show in the taskbar. It contains:
+	2. The functionalities of the admin will be visible once the admin user logins in. The admin drop-down menu will show in the taskbar. It contains:
 		1. Add products
 			Admin can add new products.
 		2. Edit products
