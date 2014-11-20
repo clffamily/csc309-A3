@@ -11,10 +11,12 @@ g2jarmst, c4cailio
 ******************************************
 ***********   General Info   *************
 ******************************************
-1. AMI ID: ami-faf96992
+1. AMI ID: ami-bc41d1d4
 2. Location within AMI: /var/www/html/estore
 3. Browser: Latest version of Chrome or Safari
 4. Screen/Window size: 1280 x 800
+
+
 
 ******************************************
 ***********   Description   **************
@@ -50,13 +52,16 @@ g2jarmst, c4cailio
 5. Email
 	Please fill in the email account and password (and other configuration, if not gmail) in the email_helper.php, which is located in estore/application/helpers/email_helper.php.
 
+
+
+
 ******************************************
 ***********   Data Structure   ***********
 ******************************************
 
 1. PHP Sessions
 	We are using PHP session specifically for containing and managing the user information. This is done so that different 
-	types of users, server-side, can be distinguised, and we can provide different events based on the type of user.
+	types of users, server-side, can be distinguished, and we can provide different events based on the type of user.
 	
 2. Cookies
 	We chose to implement cookies for the shopping cart to offer a more seamless experience, client-side, so with each change
