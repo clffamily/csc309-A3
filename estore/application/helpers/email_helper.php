@@ -9,8 +9,8 @@ function emailHelper($obj, $user_email, $order_id) {
 			'protocol' => 'smtp',
 			'smtp_host' => 'ssl://smtp.googlemail.com',
 			'smtp_port' => 465,
-			'smtp_user' => '', //Change the email account 
-			'smtp_pass' => '', //Change the email password
+			'smtp_user' => '', // Fill in the email account here.
+			'smtp_pass' => '', // Fill in the email password here.
 			'mailtype'  => 'html',
 			'charset'   => 'iso-8859-1'
 	);
