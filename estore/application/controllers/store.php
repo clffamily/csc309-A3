@@ -24,9 +24,14 @@ class Store extends CI_Controller {
 	    	$this->load->view('product/newForm.php');
     }
     
+    
+    /* The create function enables admin to create a new product in the store.
+     * If the creation is successful, the page will be directed to the product table.
+     * If not successful, it will stay in add page, and the error information will be displayed.
+     */
 	function create() {
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('name','Name','required|is_unique[products.name]');
+		$this->form_validation->set_rules('name','Name','required|is_unique[products.name]');  //The product name has to be unique.	
 		$this->form_validation->set_rules('description','Description','required');
 		$this->form_validation->set_rules('price','Price','required');
 		
@@ -45,8 +50,7 @@ class Store extends CI_Controller {
 			
 			$this->product_model->insert($product);
 
-			//Then we redirect to the index page again
-			//redirect('store/index', 'refresh');
+			//Then we redirect to the product table page again
 			redirect('admin/editProduct');
 			
 		}
@@ -79,9 +83,14 @@ class Store extends CI_Controller {
 		$this->load->view('product/editForm.php',$data);
 	}
 	
+	
+	/* The update function enables admin to modify the info of the product.
+	 * If the validation is successful, the page will be directed to the product table.
+	 * If not successful, the error information will be displayed.
+	 */
 	function update($id) {
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('name','Name','required|is_unique[products.name]');		
+		$this->form_validation->set_rules('name','Name','required|is_unique[products.name]');	//The product name has to be unique.	
 		$this->form_validation->set_rules('description','Description','required');
 		$this->form_validation->set_rules('price','Price','required');
 		
@@ -94,8 +103,7 @@ class Store extends CI_Controller {
 			
 			$this->load->model('product_model');
 			$this->product_model->update($product);
-			//Then we redirect to the index page again
-			//redirect('store/index', 'refresh');
+			//Then we redirect to the product table page again
 			redirect('admin/editProduct');
 		}
 		else {
@@ -106,9 +114,7 @@ class Store extends CI_Controller {
 			$product->price = set_value('price');
 			$data['product']=$product;
 			$data['editsingleproduct'] = "True";
-			//$this->load->view('product/editForm.php',$data);
 			$this->load->view('admin/admin_template.php',$data);
-			//redirect('admin/editSingleProduct/');
 		}
 	}
     	
@@ -118,8 +124,7 @@ class Store extends CI_Controller {
 		if (isset($id)) 
 			$this->product_model->delete($id);
 		
-		//Then we redirect to the index page again
-		//redirect('store/index', 'refresh');
+		//Then we redirect to the product table page again
 		redirect('admin/editProduct');
 		
 	}

@@ -7,13 +7,20 @@ class Admin extends CI_Controller{
 		parent::__construct();
 	}
 
-//Product operations
+	
+	/*
+	 * The following functions are used to add/edit/view products from the back end.
+	 * Only administrator has these functionalities.
+	 */
+	
+	//The function enables administrator to add the product.
 	function addProduct() {
 		$data['taskbarLinkId'] = 'admin';
 		$data['addProduct'] = 'True';
 		$this->load->view('admin/admin_template.php',$data);
 	}
 	
+	//The function enables administrator to go to the view of product table.
 	function editProduct() {
 		$this->load->model('product_model');
 		$products = $this->product_model->getAll();
@@ -22,6 +29,7 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/admin_template.php',$data);
 	}
 	
+	//The function enables administrator to modify the information of each product.
 	function editSingleProduct($id) {
 		$this->load->helper('checkuser');
 		$data = checkUser($this);
@@ -33,6 +41,7 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/admin_template.php',$data);
 	}
 	
+	//The function enables administrator to view each product.
 	function viewSingleProduct($id){
 		$this->load->helper('checkuser');
 		$data = checkUser($this);
@@ -44,6 +53,7 @@ class Admin extends CI_Controller{
 		$this->load->view('admin/admin_template.php',$data);
 	}
 	
+	//The function enables administrator to delete the product.
 	function deleteProduct($id) {
 		$this->load->model('product_model');	
 		if (isset($id))
@@ -52,7 +62,12 @@ class Admin extends CI_Controller{
 	
 	}
 	
-//User operations
+	
+	
+	/*
+	 * The following functions are used to show/delete users from the back end.
+	 * Only administrator has these functionalities.
+	 */
 	function getUsers() {
 		$this->load->model('user_model');
 		$users = $this->user_model->getAll();
@@ -70,7 +85,12 @@ class Admin extends CI_Controller{
 	}
 	
 	
-//Order operations
+	
+	
+	/*
+	 * The following functions are used to view/delete orders from the back end.
+	 * Only administrator has these functionalities.
+	 */
 	function getOrders() {
 		$this->load->model('order_model');
 		$orders = $this->order_model->getAll();
