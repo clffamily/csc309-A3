@@ -1,27 +1,41 @@
 <?php
 Class Order_model extends CI_Model {
-
+	
+	/*
+	 * Returns all values in table orders
+	 */
 	function getAll(){
 		$query = $this->db->get('orders');			
 		return $query->result_array();
 	}
 
+	/*
+	 * Returns all values in order_items with order_is equal to id
+	 */	
 	function getAllItems($id){
 		$query = $this->db->get_where('order_items', array('order_id' => $id));
 		return $query->result_array('Order');
 	}
 	
+	/*
+	 * Return all orders with id equal to id
+	 */
 	function get($id)
 	{
 		$query = $this->db->get_where('orders',array('id' => $id));
 		return $query->result_array();
 	}
 	
+	/*
+	 * Delete entry in orders with id equal to id
+	 */
 	function delete($id) {
 		return $this->db->delete("orders",array('id' => $id ));
 	}
 	
-	
+	/*
+	 * Insert and order into orders, as well as all items related to the order into order_items
+	 */
 	function insert_order($userId, $creditcardnumber, $creditcardmonth, $creditcardyear, $total, $shoppingcart) {
 		$mysqlDate = date('Ymd');
 		$mysqlTime = date('H:i:s');
