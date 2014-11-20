@@ -49,3 +49,15 @@ g2jarmst, c4cailio
 
 5. Email
 	Please fill in the email account and password (and other configuration, if not gmail) in the email_helper.php, which is located in estore/application/helpers/email_helper.php.
+
+******************************************
+***********   Data Structure   ***********
+******************************************
+
+1. PHP Sessions
+	We are using PHP session specifically for containing and managing the user information. This is done so that different 
+	types of users, server-side, can be distinguised, and we can provide different events based on the type of user.
+	
+2. Cookies
+	We chose to implement cookies for the shopping cart to offer a more seamless experience client-side, where with each change
+	to the cart, the page would not have to be reloaded. 
