@@ -214,6 +214,7 @@ $(document).ready(function(){
 		$('#shoppingcart').find('.badge').html(shoppingCart.length);
 		if (shoppingCart[0] == undefined || shoppingCart[0].id == undefined) {
 			noItemsMsg();
+			$('.checkout').hide();
 		}
 		else {
 			$('.cartprice').html(getTotal(shoppingCart));
@@ -247,6 +248,10 @@ $(document).ready(function(){
 				}
 			});
 		}
+		if (shoppingCart[0] == undefined || shoppingCart[0].id == undefined) {
+			$('.checkout').hide();	
+		}
+		$('#shoppingcart').find('.badge').html(shoppingCart.length);
 		$('.cartprice').html(getTotal(shoppingCart));
 	});
 	
