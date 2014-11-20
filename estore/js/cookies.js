@@ -1,3 +1,7 @@
+/*
+ * Function sets cname as variable name and cvalue as variable value as a string in
+ * cookies.
+ */
 function setCookie(cname, cvalue) {
     var d = new Date();
     d.setTime(d.getTime() + (1*24*60*60*1000));
@@ -5,6 +9,9 @@ function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue + ";path=/;" + expires;
 }
 
+/*
+ * Retrieves variable in string in cookies that matches string cname.
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -16,6 +23,9 @@ function getCookie(cname) {
     return "";
 }
 
+/*
+ * Removes variable with string name from cookies.
+ */
 function deleteCookie(name) {
     document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
