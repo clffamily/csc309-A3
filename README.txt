@@ -59,5 +59,5 @@ g2jarmst, c4cailio
 	types of users, server-side, can be distinguised, and we can provide different events based on the type of user.
 	
 2. Cookies
-	We chose to implement cookies for the shopping cart to offer a more seamless experience client-side, where with each change
-	to the cart, the page would not have to be reloaded. 
+	We chose to implement cookies for the shopping cart to offer a more seamless experience, client-side, so with each change
+	to the cart the page would not need to be reloaded. 
